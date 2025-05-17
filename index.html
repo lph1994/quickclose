@@ -1,157 +1,100 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Trang Web Demo Đẹp</title>
-  <style>
-    /* Reset CSS cơ bản */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Trang web hiệu ứng đẹp</title>
+<style>
+  /* Reset cơ bản */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  body, html {
+    height: 100%;
+    background: linear-gradient(270deg, #ff6ec4, #7873f5, #4ade80);
+    background-size: 600% 600%;
+    animation: bgGradient 20s ease infinite;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 
-    body {
-      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-      color: #fff;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+  @keyframes bgGradient {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
 
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(10px);
-      padding: 15px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    }
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    animation: fadeInUp 1.5s ease forwards;
+    opacity: 0;
+  }
 
-    header h1 {
-      font-weight: 700;
-      font-size: 1.5rem;
-      letter-spacing: 2px;
-      user-select: none;
-    }
+  p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    text-align: center;
+    margin-bottom: 40px;
+    animation: fadeInUp 2s ease forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+  }
 
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
+  button {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    background: #fff;
+    color: #4a3af5;
+    cursor: pointer;
+    box-shadow: 0 8px 15px rgba(74, 58, 245, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 2.5s ease forwards;
+    animation-delay: 1s;
+    opacity: 0;
+  }
 
-    nav a:hover {
-      color: #ffdd57;
-    }
+  button:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 12px 25px rgba(74, 58, 245, 0.6);
+  }
 
-    main {
-      flex-grow: 1;
-      margin-top: 80px;
-      padding: 40px 20px;
-      max-width: 900px;
-      width: 90%;
-      margin-left: auto;
-      margin-right: auto;
-      animation: fadeIn 1.2s ease forwards;
+  @keyframes fadeInUp {
+    from {
       opacity: 0;
+      transform: translateY(30px);
     }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-    main h2 {
+  /* Responsive */
+  @media (max-width: 600px) {
+    h1 {
       font-size: 2.2rem;
-      margin-bottom: 20px;
-      text-align: center;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
     }
-
-    main p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      text-align: center;
-      color: #eee;
-      max-width: 600px;
-      margin: 0 auto;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    p {
+      font-size: 1rem;
     }
-
-    footer {
-      text-align: center;
-      padding: 15px 10px;
-      background: rgba(0,0,0,0.2);
-      font-size: 0.9rem;
-      color: #ddd;
-      user-select: none;
-      margin-top: auto;
+    button {
+      font-size: 1rem;
+      padding: 12px 25px;
     }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
-    }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.2rem;
-      }
-
-      nav a {
-        margin-left: 10px;
-        font-size: 0.9rem;
-      }
-
-      main h2 {
-        font-size: 1.8rem;
-      }
-
-      main p {
-        font-size: 1rem;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
-  <header>
-    <h1>My Demo Site</h1>
-    <nav>
-      <a href="#intro">Giới thiệu</a>
-      <a href="#features">Tính năng</a>
-      <a href="#contact">Liên hệ</a>
-    </nav>
-  </header>
-
-  <main>
-    <section id="intro">
-      <h2>Chào mừng bạn đến với trang web demo!</h2>
-      <p>Đây là trang web đơn giản với thiết kế hiện đại, màu sắc hài hòa và hiệu ứng động nhẹ nhàng, phù hợp để bạn thử nghiệm trên GitHub Pages.</p>
-    </section>
-
-    <section id="features" style="margin-top: 60px;">
-      <h2>Tính năng nổi bật</h2>
-      <p>- Header cố định, dễ điều hướng</p>
-      <p>- Hiệu ứng fade-in khi trang tải</p>
-      <p>- Thiết kế responsive, hiển thị tốt trên mọi thiết bị</p>
-    </section>
-
-    <section id="contact" style="margin-top: 60px;">
-      <h2>Liên hệ</h2>
-      <p>Email: example@example.com</p>
-      <p>Phone: 0123 456 789</p>
-    </section>
-  </main>
-
-  <footer>
-    &copy; 2025 Trang web demo - Tạo bởi ChatGPT
-  </footer>
+  <h1>Chào mừng bạn đến với trang web hiệu ứng!</h1>
+  <p>Đây là trang demo với các hiệu ứng chuyển động mượt mà, nền gradient động, và nút bấm tương tác đẹp mắt.</p>
+  <button>Nhấn vào tôi</button>
 </body>
 </html>
