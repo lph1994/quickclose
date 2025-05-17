@@ -2,76 +2,156 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Trang Test GitHub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trang Web Demo Đẹp</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #d9a7c7, #fffcdc);
+    /* Reset CSS cơ bản */
+    * {
       margin: 0;
       padding: 0;
-      text-align: center;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     header {
-      background-color: #6200ea;
-      color: white;
-      padding: 2rem 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     }
 
-    h1 {
-      margin: 0;
-      font-size: 2.5rem;
+    header h1 {
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      user-select: none;
     }
 
-    section {
-      padding: 2rem;
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 600;
+      transition: color 0.3s ease;
     }
 
-    .card {
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      max-width: 400px;
-      margin: 2rem auto;
-      padding: 1.5rem;
+    nav a:hover {
+      color: #ffdd57;
+    }
+
+    main {
+      flex-grow: 1;
+      margin-top: 80px;
+      padding: 40px 20px;
+      max-width: 900px;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      animation: fadeIn 1.2s ease forwards;
+      opacity: 0;
+    }
+
+    main h2 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      text-align: center;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+
+    main p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      text-align: center;
+      color: #eee;
+      max-width: 600px;
+      margin: 0 auto;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.4);
     }
 
     footer {
-      background-color: #333;
-      color: white;
-      padding: 1rem 0;
-      position: fixed;
-      width: 100%;
-      bottom: 0;
+      text-align: center;
+      padding: 15px 10px;
+      background: rgba(0,0,0,0.2);
+      font-size: 0.9rem;
+      color: #ddd;
+      user-select: none;
+      margin-top: auto;
     }
 
-    a {
-      color: #6200ea;
-      text-decoration: none;
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
     }
 
-    a:hover {
-      text-decoration: underline;
+    /* Responsive */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.2rem;
+      }
+
+      nav a {
+        margin-left: 10px;
+        font-size: 0.9rem;
+      }
+
+      main h2 {
+        font-size: 1.8rem;
+      }
+
+      main p {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Xin chào từ GitHub Pages!</h1>
+    <h1>My Demo Site</h1>
+    <nav>
+      <a href="#intro">Giới thiệu</a>
+      <a href="#features">Tính năng</a>
+      <a href="#contact">Liên hệ</a>
+    </nav>
   </header>
 
-  <section>
-    <div class="card">
-      <h2>Giới thiệu</h2>
-      <p>Đây là một trang web mẫu dùng để test GitHub Pages.</p>
-      <p>Bạn có thể chỉnh sửa file <code>index.html</code> để cập nhật nội dung.</p>
-      <p><a href="https://github.com/" target="_blank">Xem GitHub</a></p>
-    </div>
-  </section>
+  <main>
+    <section id="intro">
+      <h2>Chào mừng bạn đến với trang web demo!</h2>
+      <p>Đây là trang web đơn giản với thiết kế hiện đại, màu sắc hài hòa và hiệu ứng động nhẹ nhàng, phù hợp để bạn thử nghiệm trên GitHub Pages.</p>
+    </section>
+
+    <section id="features" style="margin-top: 60px;">
+      <h2>Tính năng nổi bật</h2>
+      <p>- Header cố định, dễ điều hướng</p>
+      <p>- Hiệu ứng fade-in khi trang tải</p>
+      <p>- Thiết kế responsive, hiển thị tốt trên mọi thiết bị</p>
+    </section>
+
+    <section id="contact" style="margin-top: 60px;">
+      <h2>Liên hệ</h2>
+      <p>Email: example@example.com</p>
+      <p>Phone: 0123 456 789</p>
+    </section>
+  </main>
 
   <footer>
-    © 2025 - Trang test đơn giản với HTML & CSS
+    &copy; 2025 Trang web demo - Tạo bởi ChatGPT
   </footer>
 </body>
 </html>
