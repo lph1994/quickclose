@@ -1,100 +1,45 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Trang web hiệu ứng đẹp</title>
-<style>
-  /* Reset cơ bản */
-  * {
-    margin: 0; padding: 0; box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  body, html {
-    height: 100%;
-    background: linear-gradient(270deg, #ff6ec4, #7873f5, #4ade80);
-    background-size: 600% 600%;
-    animation: bgGradient 20s ease infinite;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-
-  @keyframes bgGradient {
-    0% {background-position: 0% 50%;}
-    50% {background-position: 100% 50%;}
-    100% {background-position: 0% 50%;}
-  }
-
-  h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    animation: fadeInUp 1.5s ease forwards;
-    opacity: 0;
-  }
-
-  p {
-    font-size: 1.2rem;
-    max-width: 600px;
-    text-align: center;
-    margin-bottom: 40px;
-    animation: fadeInUp 2s ease forwards;
-    animation-delay: 0.5s;
-    opacity: 0;
-  }
-
-  button {
-    padding: 15px 30px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    border: none;
-    border-radius: 50px;
-    background: #fff;
-    color: #4a3af5;
-    cursor: pointer;
-    box-shadow: 0 8px 15px rgba(74, 58, 245, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    animation: fadeInUp 2.5s ease forwards;
-    animation-delay: 1s;
-    opacity: 0;
-  }
-
-  button:hover {
-    transform: scale(1.1) translateY(-5px);
-    box-shadow: 0 12px 25px rgba(74, 58, 245, 0.6);
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* Responsive */
-  @media (max-width: 600px) {
-    h1 {
-      font-size: 2.2rem;
-    }
-    p {
-      font-size: 1rem;
-    }
-    button {
-      font-size: 1rem;
-      padding: 12px 25px;
-    }
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiệm Phô Tô Copy & In Ấn</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Chào mừng bạn đến với trang web hiệu ứng!</h1>
-  <p>Đây là trang demo với các hiệu ứng chuyển động mượt mà, nền gradient động, và nút bấm tương tác đẹp mắt.</p>
-  <button>Nhấn vào tôi</button>
+    <header>
+        <div class="hero">
+            <h1 class="animated-text">Chào Mừng Đến Với Tiệm Phô Tô Copy & In Ấn</h1>
+            <p class="subtext">Chúng tôi chuyên cung cấp dịch vụ copy, in ấn văn phòng phẩm chất lượng cao</p>
+            <a href="#services" class="btn">Khám Phá Dịch Vụ</a>
+        </div>
+    </header>
+
+    <section id="services" class="services">
+        <h2>Dịch Vụ Của Chúng Tôi</h2>
+        <div class="service-list">
+            <div class="service">
+                <img src="https://via.placeholder.com/200x150" alt="Copy Service">
+                <h3>Dịch Vụ Copy</h3>
+                <p>Chúng tôi cung cấp dịch vụ sao chép tài liệu nhanh chóng và chính xác.</p>
+            </div>
+            <div class="service">
+                <img src="https://via.placeholder.com/200x150" alt="Printing Service">
+                <h3>Dịch Vụ In Ấn</h3>
+                <p>In ấn tài liệu văn phòng phẩm chất lượng cao với giá cả hợp lý.</p>
+            </div>
+            <div class="service">
+                <img src="https://via.placeholder.com/200x150" alt="Stationery Service">
+                <h3>Văn Phòng Phẩm</h3>
+                <p>Cung cấp các loại văn phòng phẩm cần thiết cho công việc hàng ngày.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Tiệm Phô Tô Copy & In Ấn. Tất cả quyền lợi được bảo vệ.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
