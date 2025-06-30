@@ -75,15 +75,23 @@
   height: 100%;
 }
 
+   .nav-links {
+  display: flex;
+  gap: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-left: auto;
+  max-width: 600px; /* giới hạn chiều rộng tối đa */
+  width: 100%;
+}
+
     .nav-item {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 15px 25px;
-      font-weight: 500;
+      flex: 1;
+      padding: 12px 20px;
+      text-align: center;
       text-decoration: none;
       color: #333;
-      flex: 1;
+      font-weight: 500;
     }
     
     .nav-item.home     { background-color: #e3f2fd; }
