@@ -20,51 +20,57 @@
       color: #333;
     }
 
-    nav {
+       nav {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
       align-items: center;
       background-color: #ffffff;
-      padding: 15px 20px;
+      padding: 10px 20px;
       border-bottom: 2px solid #e6e9f0;
       box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+      gap: 20px; /* thêm khoảng cách nhẹ giữa logo và menu */
     }
-
+    
     .nav-left {
       display: flex;
       align-items: center;
       gap: 10px;
     }
-
+    
     .nav-left img {
       width: 36px;
       height: 36px;
     }
-
-    nav .logo {
+    
+    .logo {
       font-weight: bold;
       font-size: 1.4em;
       color: #2b2b2b;
     }
-
-    nav ul {
-      list-style: none;
+    
+    .nav-links {
       display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      padding-top: 10px;
+      gap: 0;
+      border-radius: 8px;
+      overflow: hidden;
+      max-width: 600px;
     }
-
-    nav ul li a {
+    
+    .nav-item {
+      padding: 12px 20px;
+      text-align: center;
       text-decoration: none;
-      color: #444;
+      color: #333;
       font-weight: 500;
-      transition: color 0.2s;
     }
-
-    nav ul li a:hover {
-      color: #5568fe;
+    
+    .nav-item.home     { background-color: #e3f2fd; }
+    .nav-item.features { background-color: #ede7f6; }
+    .nav-item.download { background-color: #fff3e0; }
+    .nav-item.contact  { background-color: #fce4ec; }
+    
+    .nav-item:hover {
+      color: #000;
+      filter: brightness(1.1);
     }
 
     header {
