@@ -20,58 +20,53 @@
       color: #333;
     }
 
-       nav {
+   nav {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* đổi chỗ này */
   align-items: center;
   background-color: #ffffff;
-  padding: 10px 20px;
+  padding: 15px 20px;
   border-bottom: 2px solid #e6e9f0;
   box-shadow: 0 2px 5px rgba(0,0,0,0.04);
-  gap: 20px;
 }
 
-  .nav-left {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .nav-left img {
-    width: 36px;
-    height: 36px;
-  }
-  
-  .logo {
-    font-weight: bold;
-    font-size: 1.4em;
-    color: #2b2b2b;
-  }
-  
-  .nav-links {
-    display: flex;
-    gap: 0;
-    border-radius: 8px;
-    overflow: hidden;
-    max-width: 600px;
-  }
-  
-  .nav-item {
-    padding: 12px 20px;
-    text-align: center;
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-  }
-  
-  .nav-item.home     { background-color: #e3f2fd; }
-  .nav-item.features { background-color: #ede7f6; }
-  .nav-item.download { background-color: #fff3e0; }
-  .nav-item.contact  { background-color: #fce4ec; }
-  
-  .nav-item:hover {
-    color: #000;
-    filter: brightness(1.1);
-  }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-left img {
+      width: 36px;
+      height: 36px;
+    }
+
+    nav .logo {
+      font-weight: bold;
+      font-size: 1.4em;
+      color: #2b2b2b;
+    }
+
+    nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-top: 10px;
+  margin-left: 30px; /* thêm để cách logo 1 chút */
+}
+
+    nav ul li a {
+      text-decoration: none;
+      color: #444;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav ul li a:hover {
+      color: #5568fe;
+    }
 
     header {
       position: relative;
@@ -186,23 +181,46 @@
       color: #666;
     }
 
-   
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+        padding-left: 0;
+      }
+
+      header h1 {
+        font-size: 1.8em;
+      }
+
+      .hero h2 {
+        font-size: 1.5em;
+      }
+
+      .hero p {
+        font-size: 0.95em;
+      }
+    }
   </style>
 </head>
 <body>
 
- <nav>
-  <div class="nav-left">
-    <img src="logo.jpg" alt="Logo">
-    <div class="logo">Quick Close</div>
-  </div>
-  <div class="nav-links">
-    <a href="#" class="nav-item home">Home</a>
-    <a href="#" class="nav-item features">Features</a>
-    <a href="#" class="nav-item download">Download</a>
-    <a href="#" class="nav-item contact">Contact</a>
-  </div>
-</nav>
+  <nav>
+    <div class="nav-left">
+      <img src="logo.jpg" alt="Logo">
+      <div class="logo"></div>
+    </div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Features</a></li>
+      <li><a href="#">Download</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
 
   <header>
     <h1>Efficient App Closing Solution</h1>
