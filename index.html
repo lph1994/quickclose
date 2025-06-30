@@ -67,42 +67,6 @@
       color: #5568fe;
     }
 
-    .nav-links {
-  display: flex;
-  flex-grow: 1;
-  justify-content: space-around;
-  align-items: stretch;
-  height: 100%;
-}
-
-   .nav-links {
-  display: flex;
-  gap: 0;
-  border-radius: 8px;
-  overflow: hidden;
-  margin-left: auto;
-  max-width: 600px; /* giới hạn chiều rộng tối đa */
-  width: 100%;
-}
-
-    .nav-item {
-      flex: 1;
-      padding: 12px 20px;
-      text-align: center;
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-    }
-    
-    .nav-item.home     { background-color: #e3f2fd; }
-    .nav-item.features { background-color: #ede7f6; }
-    .nav-item.download { background-color: #fff3e0; }
-    .nav-item.contact  { background-color: #fce4ec; }
-    
-    .nav-item:hover {
-      color: #000;
-      filter: brightness(1.1);
-    }
     header {
       position: relative;
       text-align: center;
@@ -244,18 +208,19 @@
 </head>
 <body>
 
-    <nav>
+  <nav>
     <div class="nav-left">
       <img src="logo.jpg" alt="Logo">
-      <div class="logo">Quick Close</div>
+      <div class="logo"></div>
     </div>
-    <div class="nav-links">
-      <a href="#" class="nav-item home">Home</a>
-      <a href="#" class="nav-item features">Features</a>
-      <a href="#" class="nav-item download">Download</a>
-      <a href="#" class="nav-item contact">Contact</a>
-    </div>
-    </nav>
+    <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Features</a></li>
+    <li><a href="#">Download</a></li>
+    <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
   <header>
     <h1>Efficient App Closing Solution</h1>
     <p>Save time, simplify workflow – built for multitaskers</p>
