@@ -67,6 +67,34 @@
       color: #5568fe;
     }
 
+    .nav-links {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-around;
+  align-items: stretch;
+  height: 100%;
+}
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 25px;
+      font-weight: 500;
+      text-decoration: none;
+      color: #333;
+      flex: 1;
+    }
+    
+    .nav-item.home     { background-color: #e3f2fd; }
+    .nav-item.features { background-color: #ede7f6; }
+    .nav-item.download { background-color: #fff3e0; }
+    .nav-item.contact  { background-color: #fce4ec; }
+    
+    .nav-item:hover {
+      color: #000;
+      filter: brightness(1.1);
+    }
     header {
       position: relative;
       text-align: center;
@@ -208,19 +236,18 @@
 </head>
 <body>
 
-  <nav>
+    <nav>
     <div class="nav-left">
       <img src="logo.jpg" alt="Logo">
       <div class="logo">Quick Close</div>
     </div>
-    <ul>
-    <li style="background-color:#e3f2fd"><a href="#">Home</a></li>
-    <li style="background-color:#ede7f6"><a href="#">Features</a></li>
-    <li style="background-color:#fff3e0"><a href="#">Download</a></li>
-    <li style="background-color:#fce4ec"><a href="#">Contact</a></li>
-    </ul>
-  </nav>
-
+    <div class="nav-links">
+      <a href="#" class="nav-item home">Home</a>
+      <a href="#" class="nav-item features">Features</a>
+      <a href="#" class="nav-item download">Download</a>
+      <a href="#" class="nav-item contact">Contact</a>
+    </div>
+    </nav>
   <header>
     <h1>Efficient App Closing Solution</h1>
     <p>Save time, simplify workflow – built for multitaskers</p>
