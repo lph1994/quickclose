@@ -205,9 +205,14 @@
 
     .features {
       background-color: #fff;
-      padding: 40px 15px;
+      padding: 40px 20px;
+    }
+
+    .features-inner {
+      max-width: 960px;
+      margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
       text-align: center;
     }
@@ -236,39 +241,52 @@
     }
 
     .how-to-use {
-      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 40px;
       padding: 60px 20px 40px;
     }
 
-    .how-to-use h2 {
+    .how-to-text {
+      flex: 1 1 300px;
+      max-width: 540px;
+    }
+
+    .how-to-text h2 {
       color: #6f42c1;
       font-size: 1.8em;
       font-weight: bold;
       margin-bottom: 15px;
     }
 
-    .how-to-use p {
-      max-width: 600px;
-      margin: 0 auto 20px;
+    .how-to-text p {
       font-size: 1em;
       color: #555;
+      margin-bottom: 20px;
     }
 
-    .how-to-use ol {
-      text-align: left;
-      max-width: 600px;
-      margin: 0 auto;
+    .how-to-text ol {
       color: #333;
+      padding-left: 20px;
     }
 
-    .how-to-use ol li {
+    .how-to-text ol li {
       margin-bottom: 10px;
     }
 
-    .how-to-use img {
-      margin-top: 20px;
+    .how-to-image {
+      flex: 1 1 300px;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    .how-to-image img {
       max-width: 100%;
       height: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
     }
 
     footer {
@@ -280,27 +298,17 @@
     }
 
     @media (max-width: 768px) {
-      .hero-section {
+      .how-to-use {
         flex-direction: column;
-        padding: 30px 20px;
         text-align: center;
       }
 
-      .hero-buttons {
-        justify-content: center;
+      .how-to-text, .how-to-image {
+        max-width: 100%;
       }
 
-      .hero-image img {
-        max-width: 90%;
-      }
-
-      .download-btn {
-        width: 90%;
-        justify-content: center;
-      }
-
-      .download-section {
-        text-align: center;
+      .features-inner {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -336,7 +344,7 @@
       <div class="download-section">
         <h3>Download for Windows</h3>
         <a href="https://example.com/quickclose_x64.msi" class="download-btn">
-          <img src="667c0bba-ae61-49b3-8708-fce7fb47709f.png" alt="Windows">
+          <img src="https://img.icons8.com/color/48/windows-10.png" alt="Windows">
           Download x64 (.msi)
         </a>
       </div>
@@ -347,38 +355,44 @@
   </section>
 
   <section class="features">
-    <div class="feature-box">
-      <img src="https://img.icons8.com/color/96/plus-math.png" alt="Add Icon">
-      <h3>Quick Add & Remove</h3>
-      <p>Just type a program name and click + to add. Remove instantly with Delete key.</p>
-    </div>
-    <div class="feature-box">
-      <img src="https://img.icons8.com/color/96/keyboard.png" alt="Shortcut Icon">
-      <h3>Custom Shortcuts</h3>
-      <p>Enable global hotkeys to close all apps quickly – Ctrl+F9 or Alt+F1.</p>
-    </div>
-    <div class="feature-box">
-      <img src="https://img.icons8.com/color/96/play.png" alt="Startup Icon">
-      <h3>Auto Startup</h3>
-      <p>Launch automatically with Windows – keep it always ready to help you.</p>
-    </div>
-    <div class="feature-box">
-      <img src="https://img.icons8.com/color/96/handshake-heart.png" alt="Support Icon">
-      <h3>Built with Heart</h3>
-      <p>Made with purpose – helping you through tough times with a simple yet meaningful tool.</p>
+    <div class="features-inner">
+      <div class="feature-box">
+        <img src="https://img.icons8.com/color/96/plus-math.png" alt="Add Icon">
+        <h3>Quick Add & Remove</h3>
+        <p>Just type a program name and click + to add. Remove instantly with Delete key.</p>
+      </div>
+      <div class="feature-box">
+        <img src="https://img.icons8.com/color/96/keyboard.png" alt="Shortcut Icon">
+        <h3>Custom Shortcuts</h3>
+        <p>Enable global hotkeys to close all apps quickly – Ctrl+F9 or Alt+F1.</p>
+      </div>
+      <div class="feature-box">
+        <img src="https://img.icons8.com/color/96/play.png" alt="Startup Icon">
+        <h3>Auto Startup</h3>
+        <p>Launch automatically with Windows – keep it always ready to help you.</p>
+      </div>
+      <div class="feature-box">
+        <img src="https://img.icons8.com/color/96/handshake-heart.png" alt="Support Icon">
+        <h3>Built with Heart</h3>
+        <p>Made with purpose – helping you through tough times with a simple yet meaningful tool.</p>
+      </div>
     </div>
   </section>
 
   <section id="how-to-use" class="how-to-use">
-    <h2>🛠️ How to Use Quick Close</h2>
-    <p>Follow these simple steps to take advantage of Quick Close and boost your productivity:</p>
-    <ol>
-      <li><strong>Step 1:</strong> Type the program name (e.g., firefox.exe) into the input field.</li>
-      <li><strong>Step 2:</strong> Click the + button to add it to your list.</li>
-      <li><strong>Step 3:</strong> Use the shortcut key (<strong>Ctrl+F9</strong> or <strong>Alt+F1</strong>) to close all selected apps.</li>
-      <li><strong>Step 4:</strong> Enable or disable auto-start and shortcut functionality as needed.</li>
-    </ol>
-    <img src="41e34934-f643-4ffc-816b-a06214ee5291.png" alt="Quick Close UI Screenshot">
+    <div class="how-to-text">
+      <h2>🛠️ How to Use Quick Close</h2>
+      <p>Follow these simple steps to take advantage of Quick Close and boost your productivity:</p>
+      <ol>
+        <li><strong>Step 1:</strong> Type the program name (e.g., firefox.exe) into the input field.</li>
+        <li><strong>Step 2:</strong> Click the + button to add it to your list.</li>
+        <li><strong>Step 3:</strong> Use the shortcut key (<strong>Ctrl+F9</strong> or <strong>Alt+F1</strong>) to close all selected apps.</li>
+        <li><strong>Step 4:</strong> Enable or disable auto-start and shortcut functionality as needed.</li>
+      </ol>
+    </div>
+    <div class="how-to-image">
+      <img src="36e66502-af9a-4ea2-aa01-886885c54568.png" alt="Quick Close UI Screenshot">
+    </div>
   </section>
 
   <footer>
