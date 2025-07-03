@@ -12,12 +12,16 @@
       font-family: "Segoe UI", sans-serif;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      background-color: #ffffff;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
       color: #333;
+      background-color: #ffffff;
     }
 
     nav {
@@ -95,8 +99,7 @@
       flex-wrap: wrap;
       align-items: center;
       justify-content: center;
-      padding: 10px 20px;
-      background-color: #ffffff;
+      padding: 40px 20px 20px;
       gap: 40px;
     }
 
@@ -108,11 +111,8 @@
     .hero-text h2 {
       font-size: 2.2em;
       margin-bottom: 20px;
-      color: #222;
-    }
-
-    .hero-text h2 span {
       color: #5568fe;
+      font-weight: bold;
     }
 
     .hero-text p {
@@ -125,6 +125,7 @@
       display: flex;
       gap: 15px;
       flex-wrap: wrap;
+      margin-bottom: 20px;
     }
 
     .btn-primary, .btn-secondary {
@@ -166,9 +167,45 @@
       height: auto;
     }
 
+    .download-section {
+      text-align: left;
+      margin-top: 10px;
+    }
+
+    .download-section h3 {
+      font-size: 1.2em;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .download-btn {
+      background-color: #4caf50;
+      color: white;
+      font-weight: 500;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1em;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 10px rgba(0, 128, 0, 0.1);
+    }
+
+    .download-btn:hover {
+      background-color: #3a9b40;
+    }
+
+    .download-btn img {
+      width: 28px;
+      height: 28px;
+    }
+
     .features {
       background-color: #fff;
-      padding: 10px 15px;
+      padding: 40px 15px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 20px;
@@ -198,6 +235,42 @@
       color: #666;
     }
 
+    .how-to-use {
+      text-align: center;
+      padding: 60px 20px 40px;
+    }
+
+    .how-to-use h2 {
+      color: #6f42c1;
+      font-size: 1.8em;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .how-to-use p {
+      max-width: 600px;
+      margin: 0 auto 20px;
+      font-size: 1em;
+      color: #555;
+    }
+
+    .how-to-use ol {
+      text-align: left;
+      max-width: 600px;
+      margin: 0 auto;
+      color: #333;
+    }
+
+    .how-to-use ol li {
+      margin-bottom: 10px;
+    }
+
+    .how-to-use img {
+      margin-top: 20px;
+      max-width: 100%;
+      height: auto;
+    }
+
     footer {
       background-color: #f1f2f5;
       padding: 20px;
@@ -207,14 +280,9 @@
     }
 
     @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
       .hero-section {
         flex-direction: column;
-        padding: 40px 20px;
+        padding: 30px 20px;
         text-align: center;
       }
 
@@ -222,28 +290,17 @@
         justify-content: center;
       }
 
-      .hero-text h2 {
-        font-size: 1.8em;
-      }
-
-      .hero-text p {
-        font-size: 0.95em;
-      }
-
       .hero-image img {
         max-width: 90%;
       }
-    }
 
-    @media (max-width: 480px) {
-      nav ul {
-        flex-direction: column;
-        gap: 10px;
-        margin-top: 10px;
+      .download-btn {
+        width: 90%;
+        justify-content: center;
       }
 
-      header h1 {
-        font-size: 1.6em;
+      .download-section {
+        text-align: center;
       }
     }
   </style>
@@ -268,43 +325,60 @@
     </div>
   </nav>
 
-  <header></header>
-
   <section class="hero-section">
     <div class="hero-text">
-      <h2><span>Quick Close Tool</span></h2>
+      <h2>Quick Close Tool</h2>
       <p>Quick Close helps you manage and shut down apps with one click – boosting your productivity effortlessly.</p>
       <div class="hero-buttons">
-        <a href="#" class="btn-primary">How to use?</a>
+        <a href="#how-to-use" class="btn-primary">How to use?</a>
         <a href="#" class="btn-secondary">Contact Us</a>
+      </div>
+      <div class="download-section">
+        <h3>Download for Windows</h3>
+        <a href="https://example.com/quickclose_x64.msi" class="download-btn">
+          <img src="667c0bba-ae61-49b3-8708-fce7fb47709f.png" alt="Windows">
+          Download x64 (.msi)
+        </a>
       </div>
     </div>
     <div class="hero-image">
-      <img src="app.jpg" alt="Your app screenshot">
+      <img src="app.jpg" alt="App Screenshot">
     </div>
   </section>
 
   <section class="features">
     <div class="feature-box">
-      <img src="https://img.icons8.com/color/96/idea.png" alt="Idea Icon">
-      <h3>Creative Ideas</h3>
-      <p>Born from real post-pandemic needs with the vision to support users worldwide.</p>
+      <img src="https://img.icons8.com/color/96/plus-math.png" alt="Add Icon">
+      <h3>Quick Add & Remove</h3>
+      <p>Just type a program name and click + to add. Remove instantly with Delete key.</p>
     </div>
     <div class="feature-box">
-      <img src="https://img.icons8.com/color/96/settings--v1.png" alt="Tools Icon">
-      <h3>Flexible Tools</h3>
-      <p>Easily add/remove programs, enable/disable features in just seconds.</p>
+      <img src="https://img.icons8.com/color/96/keyboard.png" alt="Shortcut Icon">
+      <h3>Custom Shortcuts</h3>
+      <p>Enable global hotkeys to close all apps quickly – Ctrl+F9 or Alt+F1.</p>
     </div>
     <div class="feature-box">
-      <img src="https://img.icons8.com/color/96/performance.png" alt="Performance Icon">
-      <h3>Performance Optimized</h3>
-      <p>Streamline your workflow and enhance multitasking performance.</p>
+      <img src="https://img.icons8.com/color/96/play.png" alt="Startup Icon">
+      <h3>Auto Startup</h3>
+      <p>Launch automatically with Windows – keep it always ready to help you.</p>
     </div>
     <div class="feature-box">
-      <img src="https://img.icons8.com/color/96/trophy.png" alt="Goal Icon">
-      <h3>Goal Achievement</h3>
-      <p>Not just a closing tool – a daily productivity companion to reach your goals.</p>
+      <img src="https://img.icons8.com/color/96/handshake-heart.png" alt="Support Icon">
+      <h3>Built with Heart</h3>
+      <p>Made with purpose – helping you through tough times with a simple yet meaningful tool.</p>
     </div>
+  </section>
+
+  <section id="how-to-use" class="how-to-use">
+    <h2>🛠️ How to Use Quick Close</h2>
+    <p>Follow these simple steps to take advantage of Quick Close and boost your productivity:</p>
+    <ol>
+      <li><strong>Step 1:</strong> Type the program name (e.g., firefox.exe) into the input field.</li>
+      <li><strong>Step 2:</strong> Click the + button to add it to your list.</li>
+      <li><strong>Step 3:</strong> Use the shortcut key (<strong>Ctrl+F9</strong> or <strong>Alt+F1</strong>) to close all selected apps.</li>
+      <li><strong>Step 4:</strong> Enable or disable auto-start and shortcut functionality as needed.</li>
+    </ol>
+    <img src="41e34934-f643-4ffc-816b-a06214ee5291.png" alt="Quick Close UI Screenshot">
   </section>
 
   <footer>
