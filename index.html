@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Quick Close - Productivity Software</title>
   <style>
+    /* Toàn bộ CSS giữ nguyên như trước */
     * {
       margin: 0;
       padding: 0;
@@ -155,6 +156,37 @@
       background-color: #e0a800;
     }
 
+    .tooltip-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .tooltip-warning {
+      visibility: hidden;
+      opacity: 0;
+      width: 280px;
+      background-color: #fff3cd;
+      color: #856404;
+      text-align: left;
+      border-radius: 8px;
+      padding: 12px 15px;
+      position: absolute;
+      z-index: 100;
+      top: 120%;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: opacity 0.3s ease;
+      font-size: 0.9em;
+      line-height: 1.4em;
+      border: 1px solid #ffeeba;
+    }
+
+    .tooltip-wrapper:hover .tooltip-warning {
+      visibility: visible;
+      opacity: 1;
+    }
+
     .hero-image {
       flex: 1 1 300px;
       max-width: 500px;
@@ -289,6 +321,24 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.05);
     }
 
+    .important-note-section {
+      max-width: 960px; /* Cập nhật chiều rộng bằng với How to Use Quick Close */
+      margin: 40px auto;
+      padding: 20px 25px;
+      background-color: #fff3cd;
+      border: 1px solid #ffeeba;
+      border-radius: 10px;
+      font-size: 0.95em;
+      color: #856404;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      line-height: 1.5em;
+    }
+
+    .important-note-section strong {
+      display: block;
+      margin-bottom: 8px;
+    }
+
     footer {
       background-color: #f1f2f5;
       padding: 20px;
@@ -336,10 +386,17 @@
   <section class="hero-section">
     <div class="hero-text">
       <h2>Quick Close Tool</h2>
-      <p>Quick Close helps you manage and shut down apps with one click – boosting your productivity effortlessly.</p>
+      <p>Quick Close helps you close all the apps and windows you want with just one click.</p>
       <div class="hero-buttons">
-        <a href="#how-to-use" class="btn-primary">How to use?</a>
-        <a href="#" class="btn-secondary">Contact Us</a>
+        <a href="#how-to-use" class="btn-primary">How to use ?</a>
+        <div class="tooltip-wrapper">
+          <a href="#" class="btn-secondary">Caution !</a>
+          <div class="tooltip-warning">
+           ⚠️ <strong>Important Notice:</strong><br>
+            Please use Quick Close only when your computer becomes slow, unresponsive, or heavily overloaded with RAM usage.<br><br>
+            This tool is intended for users who are experienced with the Windows operating system and know how to back up important data carefully before use.
+          </div>
+        </div>
       </div>
       <div class="download-section">
         <h3>Download for Windows</h3>
@@ -393,6 +450,12 @@
     <div class="how-to-image">
       <img src="anhphanmem.png" alt="Quick Close UI Screenshot">
     </div>
+  </section>
+
+  <section class="important-note-section">
+    ⚠️ <strong>Important Notice:</strong>
+    Please use Quick Close only when your computer becomes slow, unresponsive, or heavily overloaded with RAM usage.<br><br>
+    This tool is intended for users who are experienced with the Windows operating system and know how to back up important data carefully before use.
   </section>
 
   <footer>
