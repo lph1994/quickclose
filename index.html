@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<html lang="en">
+<head>
   <meta charset="UTF-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quick Close - Productivity Software</title>
   <style>
-    /* Toàn bộ CSS giữ nguyên như trước */
     * {
       margin: 0;
       padding: 0;
@@ -23,9 +23,16 @@
       min-height: 100vh;
       color: #333;
       background-color: #ffffff;
+      padding-top: 80px;   /* Chừa khoảng cho header cố định */
+      padding-bottom: 60px; /* Chừa khoảng cho footer cố định */
     }
 
     nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -322,7 +329,7 @@
     }
 
     .important-note-section {
-      max-width: 960px; /* Cập nhật chiều rộng bằng với How to Use Quick Close */
+      max-width: 960px;
       margin: 40px auto;
       padding: 20px 25px;
       background-color: #fff3cd;
@@ -340,6 +347,11 @@
     }
 
     footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
       background-color: #f1f2f5;
       padding: 20px;
       text-align: center;
@@ -392,11 +404,9 @@
         <div class="tooltip-wrapper">
           <a href="#" class="btn-secondary">Caution !</a>
           <div class="tooltip-warning">
-           ⚠️ <strong>Important Notice:</strong><br>
+            ⚠️ <strong>Important Notice:</strong><br>
             Please use Quick Close only when your computer becomes slow, unresponsive, or heavily overloaded with RAM usage.<br><br>
-            This tool is intended for users who are experienced with the
- Windows operating system and know how to back up important data 
-carefully before use.
+            This tool is intended for users who are experienced with the Windows operating system and know how to back up important data carefully before use.
           </div>
         </div>
       </div>
@@ -457,15 +467,12 @@ carefully before use.
   <section class="important-note-section">
     ⚠️ <strong>Important Notice:</strong>
     Please use Quick Close only when your computer becomes slow, unresponsive, or heavily overloaded with RAM usage.<br><br>
-    This tool is intended for users who are experienced with the Windows
- operating system and know how to back up important data carefully 
-before use.
+    This tool is intended for users who are experienced with the Windows operating system and know how to back up important data carefully before use.
   </section>
 
   <footer>
     © 2025 Quick Close | Contact: quickclosedonate@gmail.com | Support us: paypal.me/lph194
   </footer>
 
-
-
-</body></html>
+</body>
+</html>
