@@ -102,6 +102,34 @@
       transform: scale(1.1);
     }
 
+    .contact-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .contact-info span {
+      font-size: 0.9em;
+      color: #555;
+      font-weight: 500;
+    }
+
+    .contact-icons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .contact-icons a img {
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .contact-icons a img:hover {
+      transform: scale(1.1);
+    }
+
     .hero-section {
       display: flex;
       flex-wrap: wrap;
@@ -360,6 +388,16 @@
     }
 
     @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 20px;
+      }
+      .nav-left, nav ul, .language-switch, .contact-info {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
       .how-to-use {
         flex-direction: column;
         text-align: center;
@@ -371,6 +409,23 @@
 
       .features-inner {
         grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav {
+        padding: 10px 15px;
+      }
+      nav ul {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .contact-info {
+        flex-direction: column;
+        gap: 5px;
+      }
+      .contact-icons {
+        justify-content: center;
       }
     }
   </style>
@@ -388,6 +443,23 @@
       <li><a href="#">Download</a></li>
       <li><a href="#">Contact</a></li>
     </ul>
+    <div class="contact-info">
+      <span>Contact or Support:</span>
+      <div class="contact-icons">
+        <a href="https://facebook.com/QuickCloseForWindows" target="_blank" rel="noopener noreferrer">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+        </a>
+        <a href="https://x.com/quickcloseforWD" target="_blank" rel="noopener noreferrer">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/X_logo_2023_%28white_background%29.png" alt="X (Twitter)">
+        </a>
+        <a href="https://reddit.com/user/quickclosetool" target="_blank" rel="noopener noreferrer">
+          <img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/bd/Reddit_Logo_Icon.svg/1200px-Reddit_Logo_Icon.svg.png" alt="Reddit">
+        </a>
+        <a href="https://discord.gg/b66PDPcb" target="_blank" rel="noopener noreferrer">
+          <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6cc3fa4174b2fed28c_58482fe3cef1014c0b5e4aa2.png" alt="Discord">
+        </a>
+      </div>
+    </div>
     <div class="language-switch">
       <span>Language:</span>
       <a href="indexvn.html"> <img src="vn.png" alt="Vietnamese" title="Tiếng Việt"></a>
