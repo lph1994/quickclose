@@ -366,25 +366,25 @@
     text-decoration: underline;
   }
 
-  .support-box .paypal-line, .support-box .zalo-momo-line { /* Combined for common styles */
+  .support-box .paypal-line, .support-box .zalo-momo-line, .support-box .ko-fi-line { /* Combined for common styles */
       display: flex; /* Sử dụng flexbox để căn chỉnh icon và chữ */
       align-items: center; /* Căn giữa theo chiều dọc */
       gap: 5px; /* Khoảng cách giữa icon và chữ */
       margin-bottom: 2px; /* Reduced margin for these lines as well */
   }
 
-  .support-box .paypal-icon, .support-box .vn-flag-icon { /* Added vn-flag-icon */
-      width: 18px; /* Size for PayPal icon and VN flag icon */
+  .support-box .paypal-icon, .support-box .vn-flag-icon, .support-box .ko-fi-icon { /* Added vn-flag-icon and ko-fi-icon */
+      width: 18px; /* Size for PayPal icon, VN flag icon, and Ko-fi icon */
       height: 18px;
       vertical-align: middle;
   }
 
-  .support-box .method-text { /* New class for "Via PayPal" and "Via Zalo/Momo pay:" */
+  .support-box .method-text { /* New class for "Via PayPal", "Via Zalo/Momo pay:", and "Via Ko-fi" */
       font-weight: bold; /* Make the text bold as in the image */
       color: #333; /* Ensure a clear color */
   }
 
-  .support-box .account-info { /* New class for paypal.me link and email/phone number */
+  .support-box .account-info { /* New class for paypal.me link, email/phone number, and Ko-fi link */
       padding-left: 23px; /* To align with the text next to icons, (icon_width + gap) */
       margin-bottom: 2px;
   }
@@ -653,6 +653,12 @@
         </p>
         <p class="account-info">
             <span>0353.155.991</span>
+        </p>
+        <p class="ko-fi-line">
+            <img src="coffee-cup.png" alt="Ko-fi Icon" class="ko-fi-icon"> <span class="method-text">Via Ko-fi</span>
+        </p>
+        <p class="account-info">
+            <a href="https://ko-fi.com/lph194" target="_blank" rel="noopener noreferrer">ko-fi.com/lph194</a>
         </p>
       </div>
     </div>
