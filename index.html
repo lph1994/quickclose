@@ -250,6 +250,12 @@
       opacity: 1;
     }
 
+    .btn-secondary img { /* Style for caution icon */
+      width: 18px;
+      height: 18px;
+      margin-right: 5px;
+    }
+
     .hero-image {
       flex: 1 1 300px;
       max-width: 350px;
@@ -312,13 +318,14 @@
       text-align: center;
     }
 
-    /* New style for the Support section box */
     .support-box {
       padding: 18px;
       background-color: #e0f7fa; /* A light blue background */
       border-radius: 10px;
       box-shadow: 0 1px 5px rgba(0,0,0,0.03);
       text-align: left; /* Align text to left within the box */
+      transition: background-color 0.8s ease-in-out; /* Add transition for background color */
+      position: relative; /* Needed for absolute positioning of icon */
     }
 
     .support-box h3 {
@@ -326,6 +333,17 @@
       font-size: 1.1em;
       color: #007bb6; /* Blue heading */
       text-align: center;
+    }
+    
+    .support-box .donate-icon-top {
+        display: block;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .support-box .donate-icon-top img {
+        width: 48px; /* Adjust size as needed */
+        height: 48px;
     }
 
     .support-box p {
@@ -343,13 +361,21 @@
       color: #007bff;
       text-decoration: none;
       font-weight: 500;
+      display: inline-flex; /* To align text and PayPal icon */
+      align-items: center;
+      gap: 5px; /* Space between text and PayPal icon */
     }
 
     .support-box a:hover {
       text-decoration: underline;
     }
 
-    /* Keep existing feature-box styles, but adjust grid if needed */
+    .support-box .paypal-icon {
+        width: 18px; /* Size for PayPal icon */
+        height: 18px;
+        vertical-align: middle;
+    }
+
     .feature-box {
       padding: 18px;
       background-color: #f8f9fc;
@@ -372,7 +398,6 @@
       font-size: 0.9em;
       color: #666;
     }
-
 
     .how-to-use {
       display: flex;
@@ -548,11 +573,13 @@
         Quick Close lets you instantly close all open windows and running apps with a single shortcut key,
         <span style="color: #EA4E4E; font-weight: bold;">Just press Alt + F1 and everything vanishes in just 1 second. </span>
       </p>
-          
+            
       <div class="hero-buttons">
         <a href="#how-to-use" class="btn-primary">How to use ?</a>
         <div class="tooltip-wrapper">
-          <a href="#" class="btn-secondary">Caution !</a>
+          <a href="#" class="btn-secondary" id="caution-button">
+            <img src="warning.png" alt="Warning Icon" style="width: 18px; height: 18px;"> Caution !
+          </a>
           <div class="tooltip-warning">
             ⚠️ <strong>Extremely Important Warning:</strong><br>
             Make sure to back up your data before using Quick Close to shut down all windows. You should only use Quick Close when your computer is slow, frozen, or experiencing RAM overload that leads to system congestion.<br><br>
@@ -560,7 +587,7 @@
             This software is especially suitable for tech professionals such as debuggers, testers, developers, or miners—those who truly understand system processes and application workflows.
           </div>
         </div>
-        <a href="https://paypal.me/lph194" target="_blank" rel="noopener noreferrer" class="btn-donate">
+        <a href="#support-section" class="btn-donate" id="support-me-button">
           <img src="baotien.png" alt="Support Icon"> Support me
         </a>
       </div>
@@ -594,11 +621,14 @@
         <h3>Auto Startup</h3>
         <p>Launch automatically with Windows – keep it always ready to help you.</p>
       </div>
-      <div class="support-box">
+      <div class="support-box" id="support-section">
+        <div class="donate-icon-top">
+            <img src="friendly-hand.png" alt="Donate Hand Icon">
+        </div>
         <h3>Support Quick Close</h3>
-        <p>Your support helps us improve!</p>
-        <p><strong>PayPal:</strong> <a href="https://paypal.me/lph194" target="_blank" rel="noopener noreferrer">paypal.me/lph194</a></p>
-        <p><strong>Email:</strong> <a href="mailto:quickclosedonate@gmail.com">quickclosedonate@gmail.com</a></p>
+        <p><strong>PayPal:</strong> <a href="https://paypal.me/lph194" target="_blank" rel="noopener noreferrer">
+            <img src="paypal.png" alt="PayPal Icon" class="paypal-icon"> paypal.me/lph194</a>
+        </p>
         <p><strong>Zalo/Momo VN:</strong> 0355155991</p>
       </div>
     </div>
@@ -630,6 +660,24 @@
   <footer>
     © 2025 Quick Close | Contact: quickclosedonate@gmail.com | Support us: paypal.me/lph194
   </footer>
+
+  <script>
+    document.getElementById('support-me-button').addEventListener('click', function(event) {
+      event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ <a>
+      const supportSection = document.getElementById('support-section');
+      
+      // Thêm class để kích hoạt hiệu ứng chuyển màu
+      supportSection.style.backgroundColor = '#FFC0CB'; // Màu hồng
+      
+      // Cuộn xuống phần support-section
+      supportSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      // Sau một khoảng thời gian, trả lại màu ban đầu (hoặc màu mong muốn khác)
+      setTimeout(() => {
+        supportSection.style.backgroundColor = '#e0f7fa'; // Màu xanh nhạt ban đầu
+      }, 1500); // 1.5 giây
+    });
+  </script>
 
 </body>
 </html>
