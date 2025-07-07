@@ -23,7 +23,7 @@
       min-height: 100vh;
       color: #333;
       background-color: #ffffff;
-      padding-top: 80px;   /* Chừa khoảng cho header cố định */
+      padding-top: 80px;    /* Chừa khoảng cho header cố định */
       padding-bottom: 60px; /* Chừa khoảng cho footer cố định */
     }
 
@@ -130,6 +130,18 @@
       transform: scale(1.1);
     }
 
+    .contact-info .email-address {
+      font-size: 0.9em;
+      color: #008de1;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .contact-info .email-address:hover {
+      color: #5568fe;
+    }
+
     .hero-section {
       display: flex;
       flex-wrap: wrap;
@@ -164,13 +176,15 @@
       margin-bottom: 20px;
     }
 
-    .btn-primary, .btn-secondary {
+    .btn-primary, .btn-secondary, .btn-donate {
       padding: 12px 22px;
       border-radius: 25px;
       text-decoration: none;
       font-weight: 500;
       transition: background 0.3s;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px; /* Khoảng cách giữa icon và chữ */
     }
 
     .btn-primary {
@@ -189,6 +203,20 @@
 
     .btn-secondary:hover {
       background-color: #e0a800;
+    }
+
+    .btn-donate {
+      background-color: #28a745; /* Màu xanh lá cây cho nút Donate */
+      color: #fff;
+    }
+
+    .btn-donate:hover {
+      background-color: #218838;
+    }
+
+    .btn-donate img {
+      width: 18px; /* Kích thước icon gói tiền */
+      height: 18px;
     }
 
     .tooltip-wrapper {
@@ -459,6 +487,7 @@
           <img src="D.png" alt="Discord">
         </a>
       </div>
+      <a href="mailto:quickclosedonate@gmail.com" class="email-address">quickclosedonate@gmail.com</a>
     </div>
     <div class="language-switch">
       <span>Language:</span>
@@ -472,13 +501,13 @@
       <h2>Quick Close Tool</h2>
     
       <p style="font-weight: bold; margin-bottom: 8px;">
-  Too many windows open? Apps running wild?
-</p>
-<p>
-  Quick Close lets you instantly close all open windows and running apps with a single shortcut key,
-  <span style="color: #EA4E4E; font-weight: bold;">Just press Alt + F1 and everything vanishes in just 1 second. </span>
-</p>
-      
+        Too many windows open? Apps running wild?
+      </p>
+      <p>
+        Quick Close lets you instantly close all open windows and running apps with a single shortcut key,
+        <span style="color: #EA4E4E; font-weight: bold;">Just press Alt + F1 and everything vanishes in just 1 second. </span>
+      </p>
+          
       <div class="hero-buttons">
         <a href="#how-to-use" class="btn-primary">How to use ?</a>
         <div class="tooltip-wrapper">
@@ -490,6 +519,9 @@
             This software is especially suitable for tech professionals such as debuggers, testers, developers, or miners—those who truly understand system processes and application workflows.
           </div>
         </div>
+        <a href="https://paypal.me/lph194" target="_blank" rel="noopener noreferrer" class="btn-donate">
+          <img src="money-bag.png" alt="Donate Icon"> Donate
+        </a>
       </div>
       <div class="download-section">
         <h3>Download for Windows</h3>
@@ -547,9 +579,9 @@
 
   <section class="important-note-section">
     ⚠️ <strong>Extremely Important Warning:</strong><br>
-            Make sure to back up your data before using Quick Close to shut down all windows. You should only use Quick Close when your computer is slow, frozen, or experiencing RAM overload that leads to system congestion.<br><br>
-            Although this is a very useful tool for closing multiple applications at once, it cannot replace or outperform manually closing apps yourself.<br><br>
-            This software is especially suitable for tech professionals such as debuggers, testers, developers, or miners—those who truly understand system processes and application workflows.
+    Make sure to back up your data before using Quick Close to shut down all windows. You should only use Quick Close when your computer is slow, frozen, or experiencing RAM overload that leads to system congestion.<br><br>
+    Although this is a very useful tool for closing multiple applications at once, it cannot replace or outperform manually closing apps yourself.<br><br>
+    This software is especially suitable for tech professionals such as debuggers, testers, developers, or miners—those who truly understand system processes and application workflows.
   </section>
 
   <footer>
