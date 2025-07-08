@@ -413,72 +413,83 @@
       color: #666;
     }
 
-    .how-to-use {
+    /* Styles for how-to-use and warning sections */
+    .section-container {
+      max-width: 960px; /* Overall max width for the container */
+      margin: 40px auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Shadow effect */
+      background-color: #f8f9fc; /* Default background for these sections */
+    }
+
+    /* Specific styles for the warning section */
+    #warning-section.section-container {
+      background-color: #fff3cd; /* Light yellow background */
+      border: 1px solid #ffeeba; /* Slightly darker border */
+    }
+
+    .section-container h2 {
+      text-align: center;
+      color: #6f42c1; /* Purple heading color */
+      font-size: 2.4em;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+
+    /* Keep the image for "How to Use" section aligned */
+    #how-to-use-section .section-content {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       align-items: flex-start;
       gap: 40px;
-      padding: 60px 20px 40px;
+      padding: 0 20px; /* Padding for content inside, to match overall section padding */
     }
 
-    .how-to-text {
-      flex: 1 1 300px;
-      max-width: 465px;
+    #how-to-use-section .section-text {
+      flex: 1 1 400px; /* Allows text to grow and provides a base width */
+      max-width: 500px; /* Example max-width to control overall width, adjust as needed */
     }
 
-    .how-to-text h2 {
-      color: #5568fe;
-      font-size: 2.4em;
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
-
-    .how-to-text p {
-      font-size: 1em;
-      color: #555;
-      margin-bottom: 20px;
-    }
-
-    .how-to-text ol {
-      color: #333;
-      padding-left: 20px;
-    }
-
-    .how-to-text ol li {
-      margin-bottom: 10px;
-    }
-
-    .how-to-image {
-      flex: 1 1 300px;
-      max-width: 500px;
+    #how-to-use-section .section-image {
+      flex: 1 1 400px; /* Allows image to grow and provides a base width, matching section-text */
+      max-width: 500px; /* Example max-width to control overall width, adjust as needed */
       text-align: center;
     }
-
-    .how-to-image img {
+    #how-to-use-section .section-image img {
       max-width: 100%;
       height: auto;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.05);
     }
 
-    .important-note-section {
-      max-width: 960px;
-      margin: 40px auto;
-      padding: 20px 25px;
-      background-color: #fff3cd;
-      border: 1px solid #ffeeba;
-      border-radius: 10px;
-      font-size: 0.95em;
-      color: #856404;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      line-height: 1.5em;
+    /* Specific styles for warning text - no image, text takes full width of section-container's content area */
+    #warning-section .section-content {
+      display: flex; /* Ensure flexbox for consistency */
+      justify-content: center; /* Center the text block */
+      padding: 0 20px; /* Consistent padding */
     }
-
-    .important-note-section strong {
+    #warning-section .section-text {
+      flex: 1 1 100%; /* Occupy full width of section-content */
+      max-width: 800px; /* This max-width should be approximately section-container's max-width minus its padding. */
+      text-align: left; /* Keep text left-aligned within its block */
+      color: #856404; /* Darker yellow text for contrast */
+      line-height: 1.6; /* Improved readability */
+    }
+    #warning-section .section-text strong {
       display: block;
       margin-bottom: 8px;
+      color: #EA4E4E; /* Red for emphasis, as before */
     }
+    #warning-section .section-text p {
+      margin-bottom: 15px; /* Adjust spacing between paragraphs */
+      color: #856404; /* Keep consistent text color */
+    }
+    #warning-section .section-text p:last-child {
+      margin-bottom: 0;
+    }
+
 
     /* ABOUT THE AUTHOR SECTION STYLES - Updated */
     .about-author-section {
@@ -576,12 +587,17 @@
         justify-content: center;
         margin-bottom: 10px;
       }
-      .how-to-use {
+      
+      .section-content {
         flex-direction: column;
         text-align: center;
       }
 
-      .how-to-text, .how-to-image {
+      .section-text, .section-image {
+        max-width: 100%; /* Allow sections to take full width on smaller screens */
+      }
+      /* Ensure warning text takes full width on small screens too */
+      #warning-section .section-text {
         max-width: 100%;
       }
 
@@ -707,9 +723,9 @@
       </p>
             
       <div class="hero-buttons">
-        <a href="#how-to-use" class="btn-primary">How to use ?</a>
+        <a href="#how-to-use-section" class="btn-primary">How to use ?</a>
         <div class="tooltip-wrapper">
-          <a href="#important-note-section" class="btn-secondary" id="caution-button">
+          <a href="#warning-section" class="btn-secondary" id="caution-button">
             ⚠️ Caution !
           </a>
           <div class="tooltip-warning">
@@ -725,7 +741,7 @@
       </div>
       <div class="download-section">
         <h3>Download for Windows</h3>
-        <a href="https://example.com/quickclose_x64.msi" class="download-btn">
+        <a href="https://example.com/quickclose_x66.msi" class="download-btn">
           <img src="windows-10.png" alt="Windows">
           Download x64 (.msi)
         </a>
@@ -782,27 +798,37 @@
     </div>
   </section>
 
-  <section id="how-to-use" class="how-to-use">
-    <div class="how-to-text">
-      <h2>How to Use Quick Close</h2>
-      <p>Follow these simple steps to take advantage of Quick Close and boost your productivity:</p>
-      <ol>
-        <li><strong>Step 1:</strong> Type the program name (e.g., firefox.exe) into the input field.</li>
-        <li><strong>Step 2:</strong> Click the + button to add it to your list.</li>
-        <li><strong>Step 3:</strong> Use the shortcut key (<strong>Ctrl+F9</strong> or <strong>Alt+F1</strong>) to close all selected apps.</li>
-        <li><strong>Step 4:</strong> Enable or disable auto-start and shortcut functionality as needed.</li>
-      </ol>
-    </div>
-    <div class="how-to-image">
-      <img src="anhphanmem.png" alt="Quick Close UI Screenshot">
+  <section id="how-to-use-section" class="section-container">
+    <h2>How to Use Quick Close</h2>
+    <div class="section-content">
+      <div class="section-text">
+        <p>Follow these simple steps to take advantage of Quick Close and boost your productivity:</p>
+        <ol>
+          <li>✨ <strong>Step 1:</strong> Type the program name (e.g., firefox.exe) into the input field.</li>
+          <li>➕ <strong>Step 2:</strong> Click the + button to add it to your list.</li>
+          <li>⌨️ <strong>Step 3:</strong> Use the shortcut key (<strong>Ctrl+F9</strong> or <strong>Alt+F1</strong>) to close all selected apps.</li>
+          <li>⚙️ <strong>Step 4:</strong> Enable or disable auto-start and shortcut functionality as needed.</li>
+        </ol>
+      </div>
+      <div class="section-image">
+        <img src="anhphanmem.png" alt="Quick Close UI Screenshot">
+      </div>
     </div>
   </section>
 
-  <section class="important-note-section" id="important-note-section" >
-     <strong>⚠️ Extremely Important Warning:</strong><br>
-    Make sure to back up your data before using Quick Close to shut down all windows. You should only use Quick Close when your computer is slow, frozen, or experiencing RAM overload that leads to system congestion.<br><
-    Although this is a very useful tool for closing multiple applications at once, it cannot replace or outperform manually closing apps yourself.<br>
-    This software is especially suitable for tech professionals such as debuggers, testers, developers, or miners—those who truly understand system processes and application workflows.
+  <section id="warning-section" class="section-container">
+    <h2>Extremely Important Warning</h2>
+    <div class="section-content">
+      <div class="section-text">
+        <p>
+          ⚠️ <strong>Extremely Important Warning:</strong><br>
+          🚨 Make sure to back up your data before using Quick Close to shut down all windows.
+          💻 You should only use Quick Close when your computer is slow, frozen, or experiencing RAM overload that leads to system congestion.<br><br>
+          🚫 Although this is a very useful tool for closing multiple applications at once, it cannot replace or outperform manually closing apps yourself.<br><br>
+          👨‍💻 This software is especially suitable for tech professionals such as debuggers, testers, developers, or miners—those who truly understand system processes and application workflows.
+        </p>
+      </div>
+    </div>
   </section>
 
   <section class="about-author-section" id="about-author-section">
