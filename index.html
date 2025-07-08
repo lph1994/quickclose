@@ -1,542 +1,660 @@
 <!DOCTYPE html>
- <html lang="en">
- <head>
+<html lang="en">
+<head>
   <meta charset="UTF-8">
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quick Close - Productivity Software</title>
   <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Segoe UI", sans-serif;
-  }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      color: #333;
+      background-color: #ffffff;
+      padding-top: 80px;    /* Chừa khoảng cho header cố định */
+      padding-bottom: 60px; /* Chừa khoảng cho footer cố định */
+    }
 
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    color: #333;
-    background-color: #ffffff;
-    padding-top: 80px;    /* Chừa khoảng cho header cố định */
-    padding-bottom: 60px; /* Chừa khoảng cho footer cố định */
-  }
-
-  nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #ffffff;
-    padding: 6px 55px;
-    border-bottom: 2px solid #e6e9f0;
-    box-shadow: 1px 5px 5px rgba(0,1,111,0.04);
-  }
-
-  .nav-left {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
-
-  .nav-left img {
-    width: 29px;
-    height: 29px;
-    object-fit: contain;
-  }
-
-  nav .logo {
-    font-weight: bold;
-    font-size: 1.2em;
-    color: #008de1;
-  }
-
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-  }
-
-  nav ul li a {
-    text-decoration: none;
-    color: #444;
-    font-weight: 500;
-    transition: color 0.2s;
-  }
-
-  nav ul li a:hover {
-    color: #5568fe;
-  }
-
-  .language-switch {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
-
-  .language-switch span {
-    color: #000;
-    font-weight: 500;
-    margin-right: 5px;
-  }
-
-  .language-switch img {
-    width: 24px;
-    height: 16px;
-    cursor: pointer;
-    border-radius: 3px;
-    box-shadow: 0 0 2px rgba(0,0,0,0.2);
-    transition: transform 0.2s;
-  }
-
-  .language-switch img:hover {
-    transform: scale(1.1);
-  }
-
-  .contact-info {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-  }
-
-  .contact-info span {
-    font-size: 0.9em;
-    color: #555;
-    font-weight: 500;
-  }
-
-  .contact-icons {
-    display: flex;
-    gap: 10px;
-  }
-
-  .contact-icons a img {
-    width: 24px;
-    height: 24px;
-    border-radius: 4px;
-    transition: transform 0.2s ease-in-out;
-  }
-
-  .contact-icons a img:hover {
-    transform: scale(1.1);
-  }
-
-  .contact-info .email-address {
-    font-size: 0.9em;
-    color: #008de1;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s;
-  }
-
-  .contact-info .email-address:hover {
-    color: #5568fe;
-  }
-
-  .hero-section {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 20px 20px;
-    gap: 40px;
-  }
-
-  .hero-text {
-    flex: 1 1 300px;
-    max-width: 559px;
-  }
-
-  .hero-text h2 {
-    font-size: 2.84em;
-    margin-bottom: 20px;
-    color: #5568fe;
-    font-weight: bold;
-  }
-
-  .hero-text p {
-    font-size: 1.15em;
-    color: #2d2d2d;
-    margin-bottom: 25px;
-  }
-
-  .hero-buttons {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-  }
-
-  .btn-primary, .btn-secondary, .btn-donate {
-    padding: 12px 22px;
-    border-radius: 25px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: background 0.3s;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px; /* Khoảng cách giữa icon và chữ */
-  }
-
-  .btn-primary {
-    background-color: #5568fe;
-    color: #fff;
-  }
-
-  .btn-primary:hover {
-    background-color: #3d4fd9;
-  }
-
-  .btn-secondary {
-    background-color: #ff7800;
-    color: #fff;
-  }
-
-  .btn-secondary:hover {
-    background-color: #e0a800;
-  }
-
-  .btn-donate {
-    background-color: #0097f2;
-    color: #fff;
-  }
-
-  .btn-donate:hover {
-    background-color: #218838;
-  }
-
-  .btn-donate img {
-    width: 18px; /* Kích thước icon gói tiền */
-    height: 18px;
-  }
-
-  .tooltip-wrapper {
-    position: relative;
-    display: inline-block;
-  }
-
-  .tooltip-warning {
-    visibility: hidden;
-    opacity: 0;
-    width: 280px;
-    background-color: #fff3cd;
-    color: #856404;
-    text-align: left;
-    border-radius: 8px;
-    padding: 12px 15px;
-    position: absolute;
-    z-index: 100;
-    top: 120%;
-    left: 50%;
-    transform: translateX(-50%);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    transition: opacity 0.3s ease;
-    font-size: 0.9em;
-    line-height: 1.4em;
-    border: 1px solid #ffeeba;
-  }
-
-  .tooltip-wrapper:hover .tooltip-warning {
-    visibility: visible;
-    opacity: 1;
-  }
-
-  .btn-secondary img { /* Style for caution icon */
-    width: 18px;
-    height: 18px;
-    margin-right: 5px;
-  }
-
-  .hero-image {
-    flex: 1 1 300px;
-    max-width: 350px;
-    text-align: center;
-  }
-
-  .hero-image img {
-    width: 100%;
-    max-width: 298px;
-    height: auto;
-  }
-
-  .download-section {
-    text-align: left;
-    margin-top: 10px;
-  }
-
-  .download-section h3 {
-    font-size: 1.2em;
-    color: #369700;
-    margin-bottom: 10px;
-  }
-
-  .download-btn {
-    background-color: #4caf50;
-    color: white;
-    font-weight: 500;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 1em;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0 4px 10px rgba(0, 128, 0, 0.1);
-  }
-
-  .download-btn:hover {
-    background-color: #3a9b40;
-  }
-
-  .download-btn img {
-    width: 28px;
-    height: 28px;
-  }
-
-  .features {
-    background-color: #fff;
-    padding: 12px 20px;
-  }
-
-  .features-inner {
-    max-width: 960px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    text-align: center;
-  }
-
-  .support-box {
-    padding: 18px;
-    background-color: #e0f7fa; /* A light blue background */
-    border-radius: 10px;
-    box-shadow: 0 1px 5px rgba(0,0,0,0.03);
-    text-align: left; /* Align text to left within the box */
-    transition: background-color 0.8s ease-in-out; /* Add transition for background color */
-    position: relative; /* Needed for absolute positioning of icon */
-  }
-
-  .support-box h3 {
-    margin-bottom: 10px;
-    font-size: 1.1em;
-    color: #007bb6; /* Blue heading */
-    text-align: center;
-  }
-  
-  .support-box .donate-icon-top {
-      display: block;
-      text-align: center;
-      margin-bottom: 10px;
-  }
-
-  .support-box .donate-icon-top img {
-      width: 48px; /* Adjust size as needed */
-      height: 48px;
-  }
-
-  .support-box p {
-    font-size: 0.83em;
-    color: #007bff;
-    margin-bottom: 2px; /* Reduced margin-bottom for tighter spacing */
-  }
-
-  .support-box p:last-child {
-      margin-bottom: 0; /* Remove margin-bottom for the last paragraph */
-  }
-
-  .support-box a {
-    color: #007bff;
-    text-decoration: none;
-    font-weight: 500;
-  }
-
-  .support-box a:hover {
-    text-decoration: underline;
-  }
-
-  .support-box .paypal-line, .support-box .zalo-momo-line, .support-box .ko-fi-line { /* Combined for common styles */
-      display: flex; /* Sử dụng flexbox để căn chỉnh icon và chữ */
-      align-items: center; /* Căn giữa theo chiều dọc */
-      gap: 5px; /* Khoảng cách giữa icon và chữ */
-      margin-bottom: 2px; /* Reduced margin for these lines as well */
-  }
-
-  .support-box .paypal-icon, .support-box .vn-flag-icon, .support-box .ko-fi-icon { /* Added vn-flag-icon and ko-fi-icon */
-      width: 18px; /* Size for PayPal icon, VN flag icon, and Ko-fi icon */
-      height: 18px;
-      vertical-align: middle;
-  }
-
-  .support-box .method-text { /* New class for "Via PayPal", "Via Zalo/Momo pay:", and "Via Ko-fi" */
-      font-weight: bold; /* Make the text bold as in the image */
-      color: #333; /* Ensure a clear color */
-  }
-
-  .support-box .account-info { /* New class for paypal.me link, email/phone number, and Ko-fi link */
-      padding-left: 23px; /* To align with the text next to icons, (icon_width + gap) */
-      margin-bottom: 2px;
-  }
-
-
-  .feature-box {
-    padding: 18px;
-    background-color: #f8f9fc;
-    border-radius: 10px;
-    box-shadow: 0 1px 5px rgba(0,0,0,0.03);
-  }
-
-  .feature-box img {
-    width: 48px;
-    height: 52px;
-    margin-bottom: 10px;
-  }
-
-  .feature-box h3 {
-    margin-bottom: 8px;
-    font-size: 1em;
-  }
-
-  .feature-box p {
-    font-size: 0.9em;
-    color: #666;
-  }
-
-  .how-to-use {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 40px;
-    padding: 60px 20px 40px;
-  }
-
-  .how-to-text {
-    flex: 1 1 300px;
-    max-width: 465px;
-  }
-
-  .how-to-text h2 {
-    color: #6f42c1;
-    font-size: 1.8em;
-    font-weight: bold;
-    margin-bottom: 15px;
-  }
-
-  .how-to-text p {
-    font-size: 1em;
-    color: #555;
-    margin-bottom: 20px;
-  }
-
-  .how-to-text ol {
-    color: #333;
-    padding-left: 20px;
-  }
-
-  .how-to-text ol li {
-    margin-bottom: 10px;
-  }
-
-  .how-to-image {
-    flex: 1 1 300px;
-    max-width: 500px;
-    text-align: center;
-  }
-
-  .how-to-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
-  }
-
-  .important-note-section {
-    max-width: 960px;
-    margin: 40px auto;
-    padding: 20px 25px;
-    background-color: #fff3cd;
-    border: 1px solid #ffeeba;
-    border-radius: 10px;
-    font-size: 0.95em;
-    color: #856404;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    line-height: 1.5em;
-  }
-
-  .important-note-section strong {
-    display: block;
-    margin-bottom: 8px;
-  }
-
-  footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    background-color: #e6e6e6;;
-    padding: 10px;
-    text-align: center;
-    font-size: 0.9em;
-    color: #666;
-  }
-
-  @media (max-width: 768px) {
     nav {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 10px 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #ffffff;
+      padding: 6px 55px;
+      border-bottom: 2px solid #e6e9f0;
+      box-shadow: 1px 5px 5px rgba(0,1,111,0.04);
     }
-    .nav-left, nav ul, .language-switch, .contact-info {
-      width: 100%;
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .nav-left img {
+      width: 29px;
+      height: 29px;
+      object-fit: contain;
+    }
+
+    nav .logo {
+      font-weight: bold;
+      font-size: 1.2em;
+      color: #008de1;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #444;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav ul li a:hover {
+      color: #5568fe;
+    }
+
+    .language-switch {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .language-switch span {
+      color: #000;
+      font-weight: 500;
+      margin-right: 5px;
+    }
+
+    .language-switch img {
+      width: 24px;
+      height: 16px;
+      cursor: pointer;
+      border-radius: 3px;
+      box-shadow: 0 0 2px rgba(0,0,0,0.2);
+      transition: transform 0.2s;
+    }
+
+    .language-switch img:hover {
+      transform: scale(1.1);
+    }
+
+    .contact-info {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .contact-info span {
+      font-size: 0.9em;
+      color: #555;
+      font-weight: 500;
+    }
+
+    .contact-icons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .contact-icons a img {
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .contact-icons a img:hover {
+      transform: scale(1.1);
+    }
+
+    .contact-info .email-address {
+      font-size: 0.9em;
+      color: #008de1;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .contact-info .email-address:hover {
+      color: #5568fe;
+    }
+
+    .hero-section {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
       justify-content: center;
-      margin-bottom: 10px;
+      padding: 10px 20px 20px;
+      gap: 40px;
     }
-    .how-to-use {
-      flex-direction: column;
+
+    .hero-text {
+      flex: 1 1 300px;
+      max-width: 559px;
+    }
+
+    .hero-text h2 {
+      font-size: 2.84em;
+      margin-bottom: 20px;
+      color: #5568fe;
+      font-weight: bold;
+    }
+
+    .hero-text p {
+      font-size: 1.15em;
+      color: #2d2d2d;
+      margin-bottom: 25px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .btn-primary, .btn-secondary, .btn-donate {
+      padding: 12px 22px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px; /* Khoảng cách giữa icon và chữ */
+    }
+
+    .btn-primary {
+      background-color: #5568fe;
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background-color: #3d4fd9;
+    }
+
+    .btn-secondary {
+      background-color: #ff7800;
+      color: #fff;
+    }
+
+    .btn-secondary:hover {
+      background-color: #e0a800;
+    }
+
+    .btn-donate {
+      background-color: #0097f2;
+      color: #fff;
+    }
+
+    .btn-donate:hover {
+      background-color: #218838;
+    }
+
+    .btn-donate img {
+      width: 18px; /* Kích thước icon gói tiền */
+      height: 18px;
+    }
+
+    .tooltip-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .tooltip-warning {
+      visibility: hidden;
+      opacity: 0;
+      width: 280px;
+      background-color: #fff3cd;
+      color: #856404;
+      text-align: left;
+      border-radius: 8px;
+      padding: 12px 15px;
+      position: absolute;
+      z-index: 100;
+      top: 120%;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: opacity 0.3s ease;
+      font-size: 0.9em;
+      line-height: 1.4em;
+      border: 1px solid #ffeeba;
+    }
+
+    .tooltip-wrapper:hover .tooltip-warning {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .btn-secondary img { /* Style for caution icon */
+      width: 18px;
+      height: 18px;
+      margin-right: 5px;
+    }
+
+    .hero-image {
+      flex: 1 1 300px;
+      max-width: 350px;
       text-align: center;
     }
 
-    .how-to-text, .how-to-image {
-      max-width: 100%;
+    .hero-image img {
+      width: 100%;
+      max-width: 298px;
+      height: auto;
+    }
+
+    .download-section {
+      text-align: left;
+      margin-top: 10px;
+    }
+
+    .download-section h3 {
+      font-size: 1.2em;
+      color: #369700;
+      margin-bottom: 10px;
+    }
+
+    .download-btn {
+      background-color: #4caf50;
+      color: white;
+      font-weight: 500;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1em;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 10px rgba(0, 128, 0, 0.1);
+    }
+
+    .download-btn:hover {
+      background-color: #3a9b40;
+    }
+
+    .download-btn img {
+      width: 28px;
+      height: 28px;
+    }
+
+    .features {
+      background-color: #fff;
+      padding: 12px 20px;
     }
 
     .features-inner {
-      grid-template-columns: 1fr;
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      text-align: center;
     }
-  }
 
-  @media (max-width: 480px) {
-    nav {
-      padding: 10px 15px;
+    .support-box {
+      padding: 18px;
+      background-color: #e0f7fa; /* A light blue background */
+      border-radius: 10px;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.03);
+      text-align: left; /* Align text to left within the box */
+      transition: background-color 0.8s ease-in-out; /* Add transition for background color */
+      position: relative; /* Needed for absolute positioning of icon */
     }
-    nav ul {
+
+    .support-box h3 {
+      margin-bottom: 10px;
+      font-size: 1.1em;
+      color: #007bb6; /* Blue heading */
+      text-align: center;
+    }
+    
+    .support-box .donate-icon-top {
+        display: block;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .support-box .donate-icon-top img {
+        width: 48px; /* Adjust size as needed */
+        height: 48px;
+    }
+
+    .support-box p {
+      font-size: 0.83em;
+      color: #007bff;
+      margin-bottom: 2px; /* Reduced margin-bottom for tighter spacing */
+    }
+
+    .support-box p:last-child {
+        margin-bottom: 0; /* Remove margin-bottom for the last paragraph */
+    }
+
+    .support-box a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .support-box a:hover {
+      text-decoration: underline;
+    }
+
+    .support-box .paypal-line, .support-box .zalo-momo-line, .support-box .ko-fi-line { /* Combined for common styles */
+        display: flex; /* Sử dụng flexbox để căn chỉnh icon và chữ */
+        align-items: center; /* Căn giữa theo chiều dọc */
+        gap: 5px; /* Khoảng cách giữa icon và chữ */
+        margin-bottom: 2px; /* Reduced margin for these lines as well */
+    }
+
+    .support-box .paypal-icon, .support-box .vn-flag-icon, .support-box .ko-fi-icon { /* Added vn-flag-icon and ko-fi-icon */
+        width: 18px; /* Size for PayPal icon, VN flag icon, and Ko-fi icon */
+        height: 18px;
+        vertical-align: middle;
+    }
+
+    .support-box .method-text { /* New class for "Via PayPal", "Via Zalo/Momo pay:", and "Via Ko-fi" */
+        font-weight: bold; /* Make the text bold as in the image */
+        color: #333; /* Ensure a clear color */
+    }
+
+    .support-box .account-info { /* New class for paypal.me link, email/phone number, and Ko-fi link */
+        padding-left: 23px; /* To align with the text next to icons, (icon_width + gap) */
+        margin-bottom: 2px;
+    }
+
+
+    .feature-box {
+      padding: 18px;
+      background-color: #f8f9fc;
+      border-radius: 10px;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.03);
+    }
+
+    .feature-box img {
+      width: 48px;
+      height: 52px;
+      margin-bottom: 10px;
+    }
+
+    .feature-box h3 {
+      margin-bottom: 8px;
+      font-size: 1em;
+    }
+
+    .feature-box p {
+      font-size: 0.9em;
+      color: #666;
+    }
+
+    .how-to-use {
+      display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-    }
-    .contact-info {
-      flex-direction: column;
-      gap: 5px;
-    }
-    .contact-icons {
       justify-content: center;
+      align-items: flex-start;
+      gap: 40px;
+      padding: 60px 20px 40px;
     }
-  }
+
+    .how-to-text {
+      flex: 1 1 300px;
+      max-width: 465px;
+    }
+
+    .how-to-text h2 {
+      color: #6f42c1;
+      font-size: 1.8em;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .how-to-text p {
+      font-size: 1em;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .how-to-text ol {
+      color: #333;
+      padding-left: 20px;
+    }
+
+    .how-to-text ol li {
+      margin-bottom: 10px;
+    }
+
+    .how-to-image {
+      flex: 1 1 300px;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    .how-to-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    .important-note-section {
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 20px 25px;
+      background-color: #fff3cd;
+      border: 1px solid #ffeeba;
+      border-radius: 10px;
+      font-size: 0.95em;
+      color: #856404;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      line-height: 1.5em;
+    }
+
+    .important-note-section strong {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    /* ABOUT THE AUTHOR SECTION STYLES - Updated */
+    .about-author-section {
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 30px 25px;
+      background-color: #f0f8ff; /* Light blue background for a calming effect */
+      border: 1px solid #cceeff;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* More pronounced shadow */
+      display: flex; /* Use flexbox for horizontal layout */
+      align-items: center; /* Vertically center content */
+      gap: 30px; /* Space between image and text */
+    }
+
+    .author-avatar {
+      width: 150px; /* Size of the circular image */
+      height: 150px;
+      border-radius: 50%; /* Makes the image circular */
+      overflow: hidden; /* Hides content outside the circle */
+      border: 4px solid #ff7800; /* Orange border as in the example */
+      flex-shrink: 0; /* Prevent the image from shrinking */
+    }
+
+    .author-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ensures the image covers the area without distortion */
+    }
+
+    .author-info {
+      flex-grow: 1; /* Allows the info section to take available space */
+      text-align: left; /* Align text to the left */
+    }
+
+    .author-name-main {
+      font-size: 2.2em;
+      color: #333; /* Darker color for main name */
+      margin-bottom: 5px;
+      font-weight: 700;
+    }
+
+    .author-link {
+      font-size: 1.0em;
+      color: #007bff; /* Blue for the link */
+      text-decoration: none;
+      margin-bottom: 15px;
+      display: block; /* Make it a block element for margin */
+    }
+
+    .author-link:hover {
+      text-decoration: underline;
+    }
+
+    .author-bio {
+      font-size: 1.05em;
+      color: #444;
+      line-height: 1.7;
+      margin-bottom: 10px; /* Reduced margin bottom */
+    }
+
+    .author-bio:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .author-divider {
+      width: 100%;
+      height: 2px;
+      background-color: #ff7800; /* Orange line as in the example */
+      margin-top: 20px; /* Space above the divider */
+    }
+    /* END ABOUT THE AUTHOR SECTION STYLES */
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background-color: #e6e6e6;
+      padding: 10px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #666;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 20px;
+      }
+      .nav-left, nav ul, .language-switch, .contact-info {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+      .how-to-use {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .how-to-text, .how-to-image {
+        max-width: 100%;
+      }
+
+      .features-inner {
+        grid-template-columns: 1fr;
+      }
+
+      /* Responsive adjustments for about the author section */
+      .about-author-section {
+        flex-direction: column; /* Stack image and text vertically */
+        text-align: center; /* Center align text when stacked */
+        padding: 25px 20px;
+      }
+
+      .author-avatar {
+        margin-bottom: 20px; /* Space below avatar when stacked */
+      }
+
+      .author-name-main {
+        font-size: 1.8em;
+      }
+
+      .author-link {
+        font-size: 0.9em;
+      }
+
+      .author-bio {
+        font-size: 0.95em;
+        text-align: center; /* Center align text on small screens */
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav {
+        padding: 10px 15px;
+      }
+      nav ul {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .contact-info {
+        flex-direction: column;
+        gap: 5px;
+      }
+      .contact-icons {
+        justify-content: center;
+      }
+
+      .about-author-section {
+        margin: 20px auto;
+        padding: 20px 15px;
+      }
+
+      .author-avatar {
+        width: 120px;
+        height: 120px;
+      }
+
+      .author-name-main {
+        font-size: 1.6em;
+      }
+
+      .author-link {
+        font-size: 0.85em;
+      }
+
+      .author-bio {
+        font-size: 0.9em;
+      }
+    }
   </style>
- </head>
- <body>
+</head>
+<body>
 
   <nav>
     <div class="nav-left">
@@ -546,7 +664,7 @@
     <ul>
       <li><a href="#">Home</a></li>
       <li><a href="#">Download</a></li>
-      <li><a href="#">About the Author</a></li>
+      <li><a href="#about-author-section">About the Author</a></li>
     </ul>
     <div class="contact-info">
       <span>Contact or Support:</span>
@@ -579,7 +697,7 @@
   <section class="hero-section">
     <div class="hero-text">
       <h2>Quick Close Tool</h2>
-    
+      
       <p style="font-weight: bold; margin-bottom: 8px;">
         Too many windows open? Apps running wild?
       </p>
@@ -687,6 +805,22 @@
     This software is especially suitable for tech professionals such as debuggers, testers, developers, or miners—those who truly understand system processes and application workflows.
   </section>
 
+  <section class="about-author-section" id="about-author-section">
+    <div class="author-avatar">
+      <img src="your-avatar.jpg" alt="Author Avatar">
+    </div>
+    <div class="author-info">
+      <h2 class="author-name-main">LPH</h2>
+      <a href="https://your-blog-or-website.com" class="author-link" target="_blank" rel="noopener noreferrer">https://your-blog-or-website.com</a>
+      <p class="author-bio">
+        After the COVID-19 pandemic, my work and personal life faced many difficulties. But instead of giving up, I chose to move forward and wanted to create something truly meaningful for this life.
+      </p>
+      <p class="author-bio">
+        This application is not just a simple support tool. It gradually became a spiritual companion, helping me get through some of the darkest moments.
+      </p>
+      <div class="author-divider"></div>
+    </div>
+  </section>
   <footer>
     © 2025 Quick Close | Contact: quickclosedonate@gmail.com | Support us: paypal.me/lph194
   </footer>
@@ -709,5 +843,5 @@
     });
   </script>
 
- </body>
- </html>
+</body>
+</html>
