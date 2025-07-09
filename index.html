@@ -440,43 +440,41 @@
     /* Keep the image for "How to Use" section aligned */
     #how-to-use-section .section-content {
       display: flex;
-      flex-direction: column; /* Thay đổi từ 'flex-wrap' hoặc 'row' thành 'column' để text trên, image dưới */
-      justify-content: center;
-      align-items: center; /* Căn giữa toàn bộ nội dung (text + images) */
-      gap: 30px; /* Tăng khoảng cách giữa phần text và phần hình ảnh */
+      flex-direction: column; /* Stack steps vertically */
+      align-items: center; /* Center each step (text + image) */
+      gap: 30px; /* Space between steps */
       padding: 0 20px;
     }
 
-    #how-to-use-section .section-text {
-      flex: none; /* Bỏ flex để nó chiếm hết chiều rộng có thể */
-      max-width: 100%; /* Đảm bảo nó chiếm đủ chiều rộng */
-      text-align: left; /* Giữ văn bản căn trái */
+    /* Styling for each step (text + image) */
+    .step-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 600px; /* Limit width of each step content */
+      margin-bottom: 20px; /* Space between steps */
     }
 
-    /* Đây là quy tắc CSS MỚI để hiển thị 2 hình ảnh ngang hàng */
-    .section-images-row {
-        display: flex;
-        flex-wrap: wrap; /* Cho phép các hình ảnh xuống dòng nếu không đủ chỗ */
-        justify-content: center; /* Căn giữa các hình ảnh */
-        gap: 20px; /* Khoảng cách giữa 2 hình ảnh */
-        width: 100%; /* Đảm bảo div này chiếm toàn bộ chiều rộng có sẵn */
-        max-width: 800px; /* Giới hạn chiều rộng tối đa cho hàng ảnh, tương đương section-container */
-        margin-top: 10px; /* Khoảng cách từ phần văn bản phía trên */
+    .step-item:last-child {
+      margin-bottom: 0;
     }
 
-    #how-to-use-section .section-image {
-        flex: 1 1 250px; /* Cho phép mỗi hình ảnh co giãn, với chiều rộng cơ bản là 250px */
-        max-width: 400px; /* Giới hạn chiều rộng tối đa cho mỗi hình */
-        text-align: center;
+    .step-item p {
+      font-size: 1.05em;
+      color: #333;
+      line-height: 1.6;
+      text-align: left; /* Align text within the step item */
+      margin-bottom: 15px; /* Space between text and image */
+      width: 100%;
     }
 
-    #how-to-use-section .section-image img {
+    .step-item img.step-image {
       max-width: 100%;
       height: auto;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.05);
     }
-
     /* Specific styles for warning text - no image, text takes full width of section-container's content area */
     #warning-section .section-content {
       display: flex; /* Ensure flexbox for consistency */
@@ -643,12 +641,8 @@
       }
 
       /* Responsive adjustments for how-to-use section images */
-      .section-images-row {
-          flex-direction: column; /* Xếp ảnh chồng lên nhau trên màn hình nhỏ hơn */
-          gap: 15px;
-      }
-      #how-to-use-section .section-image {
-          max-width: 100%; /* Hình ảnh chiếm toàn bộ chiều rộng trên di động */
+      .step-item {
+          max-width: 100%; /* Image and text take full width on mobile */
       }
     }
 
@@ -743,7 +737,7 @@
         ⚡Quick Close lets you instantly close all open windows and running apps with a single shortcut key,
         <span style="color: #EA4E4E; font-weight: bold;">Just press Alt + F1 and everything vanishes in just 1 second. </span>
       </p>
-            
+          
       <div class="hero-buttons">
         <a href="#how-to-use-section" class="btn-primary">How to use ?</a>
         <div class="tooltip-wrapper">
@@ -823,23 +817,24 @@
   <section id="how-to-use-section" class="section-container">
     <h2>💡 How to use Quick Close</h2>
     <div class="section-content">
-      <div class="section-text">
-          <div> 📚 These steps are a basic guide for new users:<br><br> </div>
-        <div>
-          <div>📝 <strong>Step 1:</strong> Type the program name. When <strong>suggestions appear</strong>, click the one you want to fill in the yellow input field.</div>
-          <div>➕ <strong>Step 2:</strong> Click the <strong>+</strong> button to add the program (e.g., Firefox) to the yellow note on the right side.</div>
-          <div>🔁 <strong>Step 3:</strong> Repeat <strong>Steps 1 and 2</strong> for other applications you want (e.g., Telegram, Viber, Word) to add them to your list (yellow note).</div>
-          <div>▶️ <strong>Step 4:</strong> Press the shortcut key (<strong>Ctrl+F9</strong> or <strong>Alt+F1</strong>). A confirmation pop-up will appear asking you: "Do you want to close all programs?" Press <strong>Enter</strong>, and all selected programs will close immediately.</div>
-          <div>✅ <strong>Done!</strong> You can click the <strong>"Hide" button</strong> to minimize the QuickCloseTool to the system tray!</div>
-        </div>
+      <div class="step-item">
+        <p>📝 <strong>Step 1:</strong> Type the program name. When <strong>suggestions appear</strong>, click the one you want to fill in the yellow input field.</p>
+        <img src="step1.png" alt="Step 1: Type program name" class="step-image">
       </div>
-      <div class="section-images-row">
-          <div class="section-image">
-              <img src="image_c80b27.png" alt="Add Program UI Screenshot">
-          </div>
-          <div class="section-image">
-              <img src="image_c86978.png" alt="Close Program UI Screenshot">
-          </div>
+      <div class="step-item">
+        <p>➕ <strong>Step 2:</strong> Click the <strong>+</strong> button to add the program (e.g., Firefox) to the yellow note on the right side.</p>
+        <img src="step2.png" alt="Step 2: Add program" class="step-image">
+      </div>
+      <div class="step-item">
+        <p>🔁 <strong>Step 3:</strong> Repeat <strong>Steps 1 and 2</strong> for other applications you want (e.g., Telegram, Viber, Word) to add them to your list (yellow note).</p>
+        <img src="step3.png" alt="Step 3: Repeat adding programs" class="step-image">
+      </div>
+      <div class="step-item">
+        <p>▶️ <strong>Step 4:</strong> Press the shortcut key (<strong>Ctrl+F9</strong> or <strong>Alt+F1</strong>). A confirmation pop-up will appear asking you: "Do you want to close all programs?" Press <strong>Enter</strong>, and all selected programs will close immediately.</p>
+        <img src="step4.png" alt="Step 4: Press shortcut key" class="step-image">
+      </div>
+      <div class="step-item">
+        <p>✅ <strong>Done!</strong> You can click the <strong>"Hide" button</strong> to minimize the QuickCloseTool to the system tray!</p>
       </div>
     </div>
     <div style="text-align: center; margin-top: 20px; font-size: 0.95em; color: #555;">
