@@ -440,23 +440,36 @@
     /* Keep the image for "How to Use" section aligned */
     #how-to-use-section .section-content {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column; /* Thay đổi từ 'flex-wrap' hoặc 'row' thành 'column' để text trên, image dưới */
       justify-content: center;
-      align-items: flex-start;
-      gap: 40px;
-      padding: 0 20px; /* Padding for content inside, to match overall section padding */
+      align-items: center; /* Căn giữa toàn bộ nội dung (text + images) */
+      gap: 30px; /* Tăng khoảng cách giữa phần text và phần hình ảnh */
+      padding: 0 20px;
     }
 
     #how-to-use-section .section-text {
-      flex: 1 1 400px; /* Allows text to grow and provides a base width */
-      max-width: 500px; /* Example max-width to control overall width, adjust as needed */
+      flex: none; /* Bỏ flex để nó chiếm hết chiều rộng có thể */
+      max-width: 100%; /* Đảm bảo nó chiếm đủ chiều rộng */
+      text-align: left; /* Giữ văn bản căn trái */
+    }
+
+    /* Đây là quy tắc CSS MỚI để hiển thị 2 hình ảnh ngang hàng */
+    .section-images-row {
+        display: flex;
+        flex-wrap: wrap; /* Cho phép các hình ảnh xuống dòng nếu không đủ chỗ */
+        justify-content: center; /* Căn giữa các hình ảnh */
+        gap: 20px; /* Khoảng cách giữa 2 hình ảnh */
+        width: 100%; /* Đảm bảo div này chiếm toàn bộ chiều rộng có sẵn */
+        max-width: 800px; /* Giới hạn chiều rộng tối đa cho hàng ảnh, tương đương section-container */
+        margin-top: 10px; /* Khoảng cách từ phần văn bản phía trên */
     }
 
     #how-to-use-section .section-image {
-      flex: 1 1 400px; /* Allows image to grow and provides a base width, matching section-text */
-      max-width: 500px; /* Example max-width to control overall width, adjust as needed */
-      text-align: center;
+        flex: 1 1 250px; /* Cho phép mỗi hình ảnh co giãn, với chiều rộng cơ bản là 250px */
+        max-width: 400px; /* Giới hạn chiều rộng tối đa cho mỗi hình */
+        text-align: center;
     }
+
     #how-to-use-section .section-image img {
       max-width: 100%;
       height: auto;
@@ -627,6 +640,15 @@
       .author-bio {
         font-size: 0.95em;
         text-align: center; /* Center align text on small screens */
+      }
+
+      /* Responsive adjustments for how-to-use section images */
+      .section-images-row {
+          flex-direction: column; /* Xếp ảnh chồng lên nhau trên màn hình nhỏ hơn */
+          gap: 15px;
+      }
+      #how-to-use-section .section-image {
+          max-width: 100%; /* Hình ảnh chiếm toàn bộ chiều rộng trên di động */
       }
     }
 
@@ -802,23 +824,27 @@
     <h2>💡 How to use Quick Close</h2>
     <div class="section-content">
       <div class="section-text">
-         <div> 📚 These step are a basic guide for new users:<br><br> </div>
+          <div> 📚 These steps are a basic guide for new users:<br><br> </div>
         <div>
-          <div>📝 <strong>Step 1:</strong> Type the program name. When <strong>suggestions box appear</strong>, click the one you want to fill in the yellow input field.</div>
+          <div>📝 <strong>Step 1:</strong> Type the program name. When <strong>suggestions appear</strong>, click the one you want to fill in the yellow input field.</div>
           <div>➕ <strong>Step 2:</strong> Click the <strong>+</strong> button to add the program (e.g., Firefox) to the yellow note on the right side.</div>
-          <div>🔁 <strong>Step 3:</strong> Repeat <strong>Steps 1 and 2</strong>for other applications you want (e.g., Telegram, Viber, Word) to add them to your list (yellow note)</div>
-          <div>▶️ <strong>Step 4:</strong> Press the shortcut key<strong>(Ctrl+F9 or Alt+F1)</strong>. A confirmation pop-up will appear asking you: "Do you want to close all programs?" Press Enter, and all selected programs will close immediately.</div>
-          <div><✅<strong>Done </strong> You can click button <strong>"Hide"</strong> to hide the QuickCloseTool into tray !</div> 
-
+          <div>🔁 <strong>Step 3:</strong> Repeat <strong>Steps 1 and 2</strong> for other applications you want (e.g., Telegram, Viber, Word) to add them to your list (yellow note).</div>
+          <div>▶️ <strong>Step 4:</strong> Press the shortcut key (<strong>Ctrl+F9</strong> or <strong>Alt+F1</strong>). A confirmation pop-up will appear asking you: "Do you want to close all programs?" Press <strong>Enter</strong>, and all selected programs will close immediately.</div>
+          <div>✅ <strong>Done!</strong> You can click the <strong>"Hide" button</strong> to minimize the QuickCloseTool to the system tray!</div>
         </div>
       </div>
-      <div class="section-image">
-        <img src="anhphanmem.png" alt="Quick Close UI Screenshot">
+      <div class="section-images-row">
+          <div class="section-image">
+              <img src="image_c80b27.png" alt="Add Program UI Screenshot">
+          </div>
+          <div class="section-image">
+              <img src="image_c86978.png" alt="Close Program UI Screenshot">
+          </div>
       </div>
     </div>
     <div style="text-align: center; margin-top: 20px; font-size: 0.95em; color: #555;">
-     🗺️ You can find fully the software's features in this PDF file: <a href="your-pdf-link.pdf" target="_blank" rel="noopener noreferrer" style="color: #007bff; text-decoration: none; font-weight: bold;">⏬ QuickClose_User_Guide.pdf</a>
-       <a href="your-pdf-link.pdf" target="_blank" rel="noopener noreferrer" style="color: #007bff; text-decoration: none; font-weight: bold;">(Google Driver or</a>
+      🗺️ You can find fully the software's features in this PDF file: <a href="your-pdf-link.pdf" target="_blank" rel="noopener noreferrer" style="color: #007bff; text-decoration: none; font-weight: bold;">⏬ QuickClose_User_Guide.pdf</a>
+        <a href="your-pdf-link.pdf" target="_blank" rel="noopener noreferrer" style="color: #007bff; text-decoration: none; font-weight: bold;">(Google Driver or</a>
       <a href="your-pdf-link.pdf" target="_blank" rel="noopener noreferrer" style="color: #007bff; text-decoration: none; font-weight: bold;">Drop Box)</a>
     </div>
   </section>
