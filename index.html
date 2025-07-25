@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@600&display=swap" rel="stylesheet">
   <title>QiClose - Productivity Software</title>
   <style>
     * {
@@ -142,6 +143,47 @@
       color: #5568fe;
     }
 
+
+.rainbow-text {
+  position: relative;
+  display: inline-block;
+  font-weight: 700;
+
+background: linear-gradient(270deg, #0072ff, #0083e5, #1673ff, #0093e0, #2f6bff);
+  background-size: 800% 800%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: smoothFlow 4s linear infinite;
+  overflow: hidden;
+}
+
+@keyframes smoothFlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.rainbow-text::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  height: 100%;
+  width: 50%;
+  background: linear-gradient(120deg,
+    transparent, rgba(255,255,255,0.5), transparent);
+  transform: skewX(-20deg);
+  animation: shineSweep 3s infinite;
+}
+
+@keyframes shineSweep {
+  0% { left: -75%; }
+  100% { left: 125%; }
+}
+@keyframes shineSweep {
+  0% { left: -75%; }
+  100% { left: 125%; }
+}
+
     .hero-section {
       display: flex;
       flex-wrap: wrap;
@@ -271,8 +313,9 @@
     }
 
     .download-section {
-      text-align: left;
       margin-top: 10px;
+      justify-content: center;
+      text-align: center;
     }
 
     .download-section h3 {
@@ -727,11 +770,25 @@
       <a href="index.html"> <img src="us.png" alt="English" title="English"></a>
     </div>
   </nav>
+   
+<h2 class="rainbow-text" style="
+  font-family: 'Rubik', sans-serif;
+  font-size: 3.8em;
+  text-align: center;
+  margin-top: 1px;
+  margin-bottom: 10px;">QiClose Tool</h2>
+
+
 
   <section class="hero-section">
+    <div class="hero-image">  <img src="windows-10.png" alt="Windows"></div>
     <div class="hero-text">
-      <h2>QiClose Tool</h2>
+
       
+
+
+
+
       <p style="font-weight: bold; margin-bottom: 8px;">
         Too many windows open? Apps running wild?
       </p>
