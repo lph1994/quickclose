@@ -38,15 +38,15 @@ body::before {
   inset: 0;
 
   background-image: 
-    linear-gradient(#e5e7eb 1px, transparent 1px),
-    linear-gradient(90deg, #e5e7eb 1px, transparent 1px);
+    linear-gradient(rgba(0,0,0,0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.12) 1px, transparent 1px);
 
   background-size: 24px 24px;
-  opacity: 0.3;
+  opacity: 1; /* để màu quyết định độ đậm */
 
-  z-index: -1;          /* nằm dưới toàn bộ nội dung */
-  pointer-events: none; /* không chặn click */
-}  
+  z-index: -1;
+  pointer-events: none;
+}
     nav {
       position: fixed;
       top: 0;
