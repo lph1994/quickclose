@@ -18,16 +18,35 @@
       scroll-behavior: smooth;
     }
 
-    body {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      color: #333;
-      background-color: #ffffff;
-      padding-top: 34px;    /* Chừa khoảng cho header cố định */
-      padding-bottom: 60px; /* Chừa khoảng cho footer cố định */
-    }
+   body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: #333;
+  background-color: #ffffff;
+  padding-top: 34px;
+  padding-bottom: 60px;
 
+  position: relative;   /* thêm dòng này */
+  z-index: 0;           /* thêm dòng này */
+}
+
+/* NỀN CHÌM */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background-image: 
+    linear-gradient(#e5e7eb 1px, transparent 1px),
+    linear-gradient(90deg, #e5e7eb 1px, transparent 1px);
+
+  background-size: 24px 24px;
+  opacity: 0.3;
+
+  z-index: -1;          /* nằm dưới toàn bộ nội dung */
+  pointer-events: none; /* không chặn click */
+}
     nav {
       position: fixed;
       top: 0;
