@@ -18,34 +18,35 @@
       scroll-behavior: smooth;
     }
 
-   body {
+ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   color: #333;
-  background-color: #ffffff;
   padding-top: 34px;
   padding-bottom: 60px;
 
-  position: relative;   /* thêm dòng này */
-  z-index: 0;           /* thêm dòng này */
+  position: relative;
+  z-index: 0;
+
+  /* NỀN CHÍNH (gradient tím) */
+  background: linear-gradient(135deg, #f5f3ff, #e0e7ff, #ede9fe);
 }
 
-/* NỀN CHÌM */
+/* Lớp grid nằm dưới */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
 
   background-image: 
-  linear-gradient(#f1f5f9 1px, transparent 1px),
-  linear-gradient(90deg, #f1f5f9 1px, transparent 1px);
+    linear-gradient(rgba(99,102,241,0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99,102,241,0.15) 1px, transparent 1px);
 
-  background-size: 24px 24px;
-  opacity: 0.3;
+  background-size: 28px 28px;
 
-  z-index: -1;          /* nằm dưới toàn bộ nội dung */
-  pointer-events: none; /* không chặn click */
+  z-index: -1;
+  pointer-events: none;
 }
     nav {
       position: fixed;
