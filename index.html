@@ -319,17 +319,29 @@ background: linear-gradient(270deg, #0072ff, #0083e5, #1673ff, #0093e0, #2f6bff)
       margin-right: 5px;
     }
 
-    .hero-image {
-      flex: 1 1 300px;
-      max-width: 350px;
-      text-align: center;
-    }
+   .hero-image {
+  flex: 1 1 300px;
+  max-width: 350px;
+  display: flex;
+  justify-content: center;
+}
 
-    .hero-image img {
-      width: ;
-      max-width: 520px;
-      height: 585px;
-    }
+/* BOX */
+.hero-image .img-box {
+  padding: 8px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+}
+
+/* ẢNH */
+.hero-image img {
+  width: 100%;          /* fix lỗi thiếu width */
+  max-width: 100%;
+  height: auto;         /* tránh méo ảnh */
+  border-radius: 12px;
+  display: block;
+}
 
     .download-section {
       margin-top: 10px;
