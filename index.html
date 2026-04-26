@@ -161,13 +161,13 @@
       display: inline-block;
     }
 
-    @keyframes shimmer {
-      0%   { background-position: -200% center; }
-      100% { background-position: 200% center; }
-    }
+    @keyframes smoothFlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
     .hero-title {
       background-size: 200% auto;
-      animation: shimmer 4s linear infinite;
+      animation: smoothFlow 3s linear infinite;
     }
 
     .hero-desc {
