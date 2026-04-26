@@ -3,847 +3,922 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QiClose — Productivity Software</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rubik:wght@700;800&display=swap" rel="stylesheet">
+  <title>QiClose - Productivity Software</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --blue: #3b6ef8;
-      --blue-light: #eef2ff;
-      --blue-mid: #c7d4fd;
-      --orange: #ff7800;
-      --orange-light: #fff4ec;
-      --green: #22c55e;
-      --green-light: #f0fdf4;
-      --red: #ef4444;
-      --text: #1a1a2e;
-      --text2: #4a4a6a;
-      --text3: #8888aa;
-      --border: #e8eaf6;
-      --surface: #f8f9ff;
-      --white: #ffffff;
-      --shadow: 0 2px 12px rgba(59,110,248,0.08);
-      --shadow-hover: 0 8px 28px rgba(59,110,248,0.15);
-      --radius: 14px;
-      --font: 'Inter', sans-serif;
-      --font-display: 'Rubik', sans-serif;
+      --blue:       #2563eb;
+      --blue-light: #3b82f6;
+      --blue-pale:  #eff6ff;
+      --accent:     #f97316;
+      --accent2:    #06b6d4;
+      --text:       #1e293b;
+      --muted:      #64748b;
+      --border:     #e2e8f0;
+      --white:      #ffffff;
+      --card-bg:    #f8fafc;
+      --warn-bg:    #fffbeb;
+      --warn-border:#fde68a;
+      --warn-text:  #92400e;
+      --green:      #16a34a;
+      --nav-h:      64px;
     }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: var(--font);
-      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
       background: var(--white);
-      padding-top: 68px;
+      color: var(--text);
+      padding-top: var(--nav-h);
     }
 
-    /* NAV */
+    /* ─── NAV ─── */
     nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      inset: 0 0 auto 0;
       z-index: 1000;
-      background: rgba(255,255,255,0.93);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-      padding: 0 40px;
-      height: 68px;
+      height: var(--nav-h);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 24px;
+      padding: 0 40px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 1px 12px rgba(0,0,0,0.06);
     }
 
-    .nav-logo {
+    .nav-brand {
       display: flex;
       align-items: center;
       gap: 10px;
       text-decoration: none;
-      flex-shrink: 0;
     }
-
-    .nav-logo img {
-      width: 32px; height: 32px;
-      border-radius: 8px;
-      object-fit: contain;
-    }
-
-    .nav-logo-name {
-      font-family: var(--font-display);
-      font-size: 1.3rem;
+    .nav-brand img { width:30px; height:30px; border-radius:8px; object-fit:contain; }
+    .nav-brand .logo-txt {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.35em;
       font-weight: 800;
-      color: var(--blue);
+      background: linear-gradient(135deg, var(--blue) 0%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .nav-center {
+    .nav-links {
       display: flex;
-      align-items: center;
-      gap: 2rem;
       list-style: none;
+      gap: 6px;
     }
-
-    .nav-center a {
+    .nav-links a {
       text-decoration: none;
-      color: var(--text2);
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color 0.2s;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.9em;
+      padding: 6px 14px;
+      border-radius: 8px;
+      transition: color .2s, background .2s;
     }
-
-    .nav-center a:hover { color: var(--blue); }
+    .nav-links a:hover { color: var(--blue); background: var(--blue-pale); }
 
     .nav-right {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 16px;
     }
 
-    .nav-contact {
+    .contact-strip {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
     }
-
-    .nav-contact a img {
-      width: 22px; height: 22px;
-      border-radius: 4px;
-      opacity: 0.65;
-      transition: opacity 0.2s, transform 0.2s;
+    .contact-strip .lbl { font-size:.82em; color:var(--muted); font-weight:600; }
+    .contact-icons { display:flex; gap:6px; }
+    .contact-icons a img {
+      width:24px; height:24px; border-radius:6px;
+      transition: transform .2s, box-shadow .2s;
     }
-
-    .nav-contact a img:hover { opacity: 1; transform: scale(1.15); }
-
+    .contact-icons a img:hover { transform:scale(1.15); box-shadow:0 4px 10px rgba(0,0,0,0.15); }
     .nav-email {
-      font-size: 0.82rem;
-      color: var(--blue);
-      text-decoration: none;
-      font-weight: 500;
+      font-size:.82em; color:var(--blue); font-weight:600;
+      text-decoration:none;
+      white-space:nowrap;
     }
+    .nav-email:hover { text-decoration:underline; }
 
-    .nav-lang {
-      display: flex;
-      align-items: center;
-      gap: 5px;
+    .lang-switch { display:flex; gap:6px; align-items:center; }
+    .lang-switch span { font-size:.8em; color:var(--muted); font-weight:600; }
+    .lang-switch img {
+      width:24px; height:16px; border-radius:3px;
+      cursor:pointer;
+      box-shadow:0 0 3px rgba(0,0,0,0.2);
+      transition:transform .2s;
     }
+    .lang-switch img:hover { transform:scale(1.12); }
 
-    .nav-lang img {
-      width: 22px; height: 15px;
-      border-radius: 3px;
-      cursor: pointer;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.15);
-      transition: transform 0.2s;
-    }
-
-    .nav-lang img:hover { transform: scale(1.1); }
-
-    /* HERO */
+    /* ─── HERO ─── */
     .hero {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 60px;
-      flex-wrap: wrap;
-      padding: 60px 40px 70px;
+      padding: 72px 60px 60px;
       max-width: 1100px;
       margin: 0 auto;
+      flex-wrap: wrap;
     }
 
-    .hero-text { flex: 1 1 380px; max-width: 480px; }
+    .hero-text { flex: 1 1 360px; max-width: 480px; }
 
     .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background: var(--blue-light);
+      gap: 6px;
+      background: var(--blue-pale);
       color: var(--blue);
-      border: 1px solid var(--blue-mid);
-      border-radius: 100px;
-      padding: 5px 14px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
+      font-size: .78em;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 99px;
+      margin-bottom: 20px;
     }
 
     .hero-title {
-      font-family: var(--font-display);
-      font-size: clamp(2.8rem, 6vw, 4.2rem);
+      font-family: 'Syne', sans-serif;
+      font-size: 3.8em;
       font-weight: 800;
       line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.25rem;
-      background: linear-gradient(135deg, #3b6ef8 0%, #6b8ffa 50%, #3b6ef8 100%);
-      background-size: 200%;
+      margin-bottom: 22px;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--accent2) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: gradShift 4s ease infinite;
+      position: relative;
+      display: inline-block;
     }
 
-    @keyframes gradShift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
+    @keyframes shimmer {
+      0%   { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    .hero-title {
+      background-size: 200% auto;
+      animation: shimmer 4s linear infinite;
     }
 
     .hero-desc {
-      font-size: 1.03rem;
-      color: var(--text2);
-      line-height: 1.8;
-      margin-bottom: 2rem;
+      font-size: 1.05em;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 32px;
     }
-
-    .kpill {
+    .hero-desc strong { color: var(--text); }
+    .hero-desc .kbd {
       display: inline-block;
-      background: #fff0f0;
-      color: var(--red);
-      border: 1px solid #fecaca;
-      border-radius: 6px;
-      padding: 1px 8px;
-      font-size: 0.88em;
+      background: var(--text);
+      color: #fff;
+      font-size: .82em;
       font-weight: 700;
-      font-family: monospace;
+      padding: 2px 9px;
+      border-radius: 5px;
+      letter-spacing: .04em;
     }
+    .hero-desc .highlight { color: var(--blue); font-weight: 700; }
 
-    .kpill.blue {
-      background: var(--blue-light);
-      color: var(--blue);
-      border-color: var(--blue-mid);
-    }
-
-    .hero-buttons {
+    .hero-btns {
       display: flex;
-      flex-wrap: wrap;
       gap: 10px;
-      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 7px;
-      padding: 10px 20px;
+      padding: 11px 22px;
       border-radius: 10px;
-      font-family: var(--font);
-      font-size: 0.9rem;
-      font-weight: 600;
+      font-weight: 700;
+      font-size: .92em;
       text-decoration: none;
-      border: 1.5px solid transparent;
+      transition: transform .18s, box-shadow .18s, background .18s;
       cursor: pointer;
-      transition: all 0.2s;
+      border: none;
     }
+    .btn:hover { transform: translateY(-2px); }
 
     .btn-primary {
       background: var(--blue);
       color: #fff;
-      box-shadow: 0 4px 14px rgba(59,110,248,0.28);
+      box-shadow: 0 4px 16px rgba(37,99,235,.35);
     }
+    .btn-primary:hover { background: #1d4ed8; box-shadow: 0 6px 22px rgba(37,99,235,.45); }
 
-    .btn-primary:hover { background: #2d5ee8; transform: translateY(-1px); }
-
-    .btn-caution {
-      background: var(--orange-light);
-      color: var(--orange);
-      border-color: #ffd0a8;
+    .btn-warn {
+      background: #fff7ed;
+      color: var(--accent);
+      border: 1.5px solid #fed7aa;
     }
+    .btn-warn:hover { background: #ffedd5; box-shadow: 0 4px 14px rgba(249,115,22,.15); }
 
-    .btn-caution:hover { background: #ffe8d6; transform: translateY(-1px); }
-
-    .btn-support {
-      background: #e0f2fe;
-      color: #0284c7;
-      border-color: #bae6fd;
+    .btn-donate {
+      background: var(--accent2);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(6,182,212,.3);
     }
+    .btn-donate:hover { background: #0891b2; }
 
-    .btn-support:hover { background: #bae6fd; transform: translateY(-1px); }
-
-    .tooltip-wrapper { position: relative; display: inline-block; }
-
-    .tooltip-box {
-      visibility: hidden;
-      opacity: 0;
-      width: 300px;
-      background: #fffbeb;
-      color: #92400e;
-      border: 1px solid #fde68a;
+    .download-area { margin-top: 4px; }
+    .download-area h3 {
+      font-size: .88em;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .download-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn-dl {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
       border-radius: 10px;
+      font-weight: 700;
+      font-size: .88em;
+      text-decoration: none;
+      transition: transform .18s, box-shadow .18s;
+    }
+    .btn-dl:hover { transform: translateY(-2px); }
+    .btn-dl-green { background: #dcfce7; color: var(--green); border: 1.5px solid #86efac; }
+    .btn-dl-green:hover { background: #bbf7d0; box-shadow: 0 4px 14px rgba(22,163,74,.2); }
+    .btn-dl-blue  { background: var(--blue-pale); color: var(--blue); border: 1.5px solid #bfdbfe; }
+    .btn-dl-blue:hover { background: #dbeafe; box-shadow: 0 4px 14px rgba(37,99,235,.15); }
+    .btn-dl img { width:16px; height:16px; }
+
+    /* Tooltip */
+    .tip-wrap { position:relative; display:inline-block; }
+    .tip-box {
+      visibility:hidden; opacity:0;
+      width:290px;
+      background: var(--warn-bg);
+      color: var(--warn-text);
+      border: 1px solid var(--warn-border);
+      border-radius: 12px;
       padding: 14px 16px;
       position: absolute;
       z-index: 200;
       top: calc(100% + 10px);
       left: 50%;
       transform: translateX(-50%);
-      box-shadow: var(--shadow-hover);
-      transition: opacity 0.2s;
-      font-size: 0.84rem;
-      line-height: 1.6;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      font-size: .86em;
+      line-height: 1.5;
+      transition: opacity .25s;
     }
+    .tip-wrap:hover .tip-box { visibility:visible; opacity:1; }
 
-    .tooltip-wrapper:hover .tooltip-box { visibility: visible; opacity: 1; }
-
-    .download-block { }
-
-    .dl-label {
-      font-size: 0.78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text3);
-      margin-bottom: 10px;
-    }
-
-    .dl-btns { display: flex; flex-wrap: wrap; gap: 10px; }
-
-    .btn-dl {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 10px 18px;
-      border-radius: 10px;
-      font-size: 0.87rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s;
-      border: 1.5px solid transparent;
-    }
-
-    .btn-dl.green {
-      background: var(--green-light);
-      color: #15803d;
-      border-color: #bbf7d0;
-    }
-
-    .btn-dl.green:hover { background: #dcfce7; transform: translateY(-1px); }
-
-    .btn-dl.blue {
-      background: var(--blue-light);
-      color: var(--blue);
-      border-color: var(--blue-mid);
-    }
-
-    .btn-dl.blue:hover { background: #dbeafe; transform: translateY(-1px); }
-
-    .btn-dl img { width: 18px; height: 18px; }
-
-    .hero-image {
-      flex: 1 1 320px;
-      max-width: 400px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .hero-img-frame {
+    /* ─── HERO IMAGE ─── */
+    .hero-visual { flex: 1 1 300px; max-width: 380px; display:flex; justify-content:center; }
+    .img-card {
       background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 18px;
+      border-radius: 20px;
       padding: 10px;
-      box-shadow: 0 20px 60px rgba(59,110,248,0.1), 0 4px 16px rgba(0,0,0,0.06);
+      box-shadow: 0 20px 60px rgba(37,99,235,.14), 0 4px 12px rgba(0,0,0,.06);
+      border: 1px solid var(--border);
+    }
+    .img-card img {
+      width:100%; border-radius:14px; display:block;
     }
 
-    .hero-img-frame img {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      display: block;
-    }
-
-    /* FEATURES */
-    .features-section {
-      background: var(--surface);
-      padding: 56px 40px;
+    /* ─── FEATURES STRIP ─── */
+    .features-strip {
+      background: var(--card-bg);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
+      padding: 48px 40px;
     }
-
-    .features-inner {
-      max-width: 1000px;
+    .features-grid {
+      max-width: 1060px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
+      gap: 20px;
     }
 
-    .feature-card {
+    .feat-card {
       background: var(--white);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 24px 20px;
-      transition: box-shadow 0.2s, transform 0.2s;
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .feat-card:hover { box-shadow: 0 8px 28px rgba(37,99,235,.1); transform:translateY(-3px); }
+
+    .feat-icon {
+      width: 48px; height: 48px;
+      background: var(--blue-pale);
+      border-radius: 12px;
+      display: flex; align-items:center; justify-content:center;
+      margin-bottom: 4px;
+    }
+    .feat-icon img { width:28px; height:28px; object-fit:contain; }
+    .feat-card h3 { font-size:.98em; font-weight:700; color:var(--text); }
+    .feat-card p  { font-size:.88em; color:var(--muted); line-height:1.6; }
+
+    /* ─── DONATE CARD (special) ─── */
+    .donate-card {
+      background: linear-gradient(135deg, #eff6ff 0%, #f0fdfa 100%);
+      border: 1.5px solid #bfdbfe;
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .donate-card:hover { box-shadow: 0 8px 28px rgba(37,99,235,.12); transform:translateY(-3px); }
+
+    .donate-card h3 {
+      font-size:.98em; font-weight:800; color: var(--blue);
+      text-align:center; margin-bottom:14px;
     }
 
-    .feature-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+    .donate-method {
+      display:flex; align-items:center; gap:7px;
+      font-size:.84em; font-weight:700; color:var(--text);
+      margin-bottom:3px;
+    }
+    .donate-method img { width:18px; height:18px; border-radius:3px; }
 
-    .feature-card .icon-wrap {
-      width: 46px; height: 46px;
-      border-radius: 12px;
-      background: var(--blue-light);
+    .donate-info {
+      font-size:.82em; color:var(--muted);
+      padding-left:25px;
+      margin-bottom:8px;
+      line-height:1.6;
+    }
+    .donate-info a { color:var(--blue); text-decoration:none; font-weight:600; }
+    .donate-info a:hover { text-decoration:underline; }
+
+    /* QR section inside donate */
+    .qr-row {
       display: flex;
+      gap: 12px;
+      margin-top: 10px;
+      justify-content: center;
+    }
+    .qr-slot {
+      flex: 1;
+      border: 2px dashed #93c5fd;
+      border-radius: 12px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,.7);
+      min-height: 120px;
+      justify-content: center;
+    }
+    .qr-slot img {
+      width: 100%;
+      max-width: 90px;
+      height: auto;
+      border-radius: 6px;
+      display: block;
+    }
+    .qr-slot .qr-label {
+      font-size: .75em;
+      font-weight: 700;
+      color: var(--blue);
+      text-align: center;
+    }
+    .qr-placeholder {
+      width: 80px; height: 80px;
+      background: #dbeafe;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      margin-bottom: 14px;
+      gap: 4px;
+      color: var(--blue);
+      font-size: .7em;
+      font-weight: 700;
+      text-align: center;
     }
+    .qr-placeholder svg { opacity:.5; }
 
-    .feature-card .icon-wrap img { width: 26px; height: 26px; object-fit: contain; }
-
-    .feature-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 7px; }
-
-    .feature-card p { font-size: 0.86rem; color: var(--text2); line-height: 1.6; }
-
-    .support-card {
-      background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%);
-      border: 1px solid var(--blue-mid);
-      border-radius: var(--radius);
-      padding: 24px 20px;
-    }
-
-    .support-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--blue); margin-bottom: 14px; }
-
-    .s-row { display: flex; align-items: center; gap: 7px; margin-bottom: 3px; }
-    .s-row img { width: 17px; height: 17px; }
-    .s-row .m { font-size: 0.82rem; font-weight: 700; color: var(--text); }
-
-    .s-detail { padding-left: 24px; margin-bottom: 10px; }
-    .s-detail a, .s-detail span { font-size: 0.82rem; color: var(--blue); text-decoration: none; }
-    .s-detail a:hover { text-decoration: underline; }
-
-    /* CONTENT SECTIONS */
-    .content-section {
-      max-width: 780px;
-      margin: 60px auto;
+    /* ─── SECTION CONTAINER (how-to, warning) ─── */
+    .section-wrap {
+      max-width: 860px;
+      margin: 56px auto;
       padding: 0 24px;
     }
 
-    .section-heading {
-      font-family: var(--font-display);
-      font-size: clamp(1.5rem, 4vw, 2.1rem);
+    .section-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 44px 48px;
+      box-shadow: 0 4px 20px rgba(0,0,0,.05);
+    }
+
+    .section-card.warn-card {
+      background: var(--warn-bg);
+      border-color: var(--warn-border);
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 2em;
       font-weight: 800;
       color: var(--blue);
-      text-align: center;
-      margin-bottom: 8px;
-    }
-
-    .section-sub {
-      text-align: center;
-      color: var(--text3);
-      font-size: 0.88rem;
       margin-bottom: 36px;
+      text-align: center;
     }
+    .warn-card .section-title { color: #b45309; }
 
-    .steps-list { display: flex; flex-direction: column; }
+    /* Steps */
+    .steps { display:flex; flex-direction:column; gap:40px; }
 
-    .step-block {
+    .step {
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      padding: 28px 0;
-      border-bottom: 1px dashed var(--border);
+      gap: 14px;
     }
 
-    .step-block:last-child { border-bottom: none; }
-
-    .step-header { display: flex; align-items: flex-start; gap: 14px; }
-
+    .step-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
     .step-num {
-      width: 30px; height: 30px;
-      border-radius: 50%;
+      flex-shrink: 0;
+      width: 32px; height: 32px;
       background: var(--blue);
       color: #fff;
-      font-size: 0.83rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      margin-top: 2px;
+      border-radius: 50%;
+      display: flex; align-items:center; justify-content:center;
+      font-size: .85em;
+      font-weight: 800;
     }
-
-    .step-num.done { background: var(--green); }
-
-    .step-text { font-size: 0.97rem; color: var(--text); line-height: 1.75; }
+    .step-text {
+      font-size: .97em;
+      color: var(--text);
+      line-height: 1.7;
+    }
     .step-text strong { color: var(--blue); }
 
     .step-img {
       width: 100%;
-      max-width: 620px;
-      height: auto;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.07);
-      display: block;
+      max-width: 560px;
       margin: 0 auto;
-    }
-
-    .tray-img {
-      display: inline;
-      height: 20px;
-      width: auto;
-      vertical-align: middle;
-      border-radius: 3px;
-    }
-
-    .guide-link-box {
-      background: var(--blue-light);
-      border: 1px solid var(--blue-mid);
       border-radius: 10px;
-      padding: 13px 18px;
+      box-shadow: 0 4px 20px rgba(249,115,22,.18), 0 0 0 1px rgba(249,115,22,.1);
+      display: block;
+    }
+
+    .step-divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .tray-img { display:inline; vertical-align:middle; height:22px; width:auto; border-radius:4px; }
+
+    /* PDF link row */
+    .pdf-row {
       text-align: center;
-      font-size: 0.88rem;
-      color: var(--text2);
+      margin-top: 20px;
+      padding: 16px;
+      background: var(--blue-pale);
+      border-radius: 12px;
+      font-size: .9em;
+      color: var(--muted);
     }
+    .pdf-row a { color:var(--blue); font-weight:700; text-decoration:none; }
+    .pdf-row a:hover { text-decoration:underline; }
 
-    .guide-link-box a { color: var(--blue); font-weight: 600; text-decoration: none; }
-    .guide-link-box a:hover { text-decoration: underline; }
-
-    /* WARNING */
-    .warning-section { max-width: 780px; margin: 0 auto 60px; padding: 0 24px; }
-
-    .warning-box {
-      background: #fffbeb;
-      border: 1px solid #fde68a;
-      border-radius: var(--radius);
-      padding: 26px 28px;
+    /* Warning text */
+    .warn-text {
+      font-size: .97em;
+      color: var(--warn-text);
+      line-height: 1.8;
     }
+    .warn-text p { margin-bottom: 12px; }
+    .warn-text p:last-child { margin-bottom:0; }
 
-    .warning-box p { font-size: 0.91rem; color: #78350f; line-height: 2; }
-
-    /* AUTHOR */
-    .author-section { max-width: 780px; margin: 0 auto 80px; padding: 0 24px; }
-
+    /* ─── ABOUT AUTHOR ─── */
+    .author-wrap {
+      max-width: 860px;
+      margin: 0 auto 80px;
+      padding: 0 24px;
+    }
     .author-card {
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: 20px;
-      padding: 36px 32px;
+      padding: 40px 48px;
       display: flex;
       align-items: center;
-      gap: 30px;
-      box-shadow: var(--shadow);
+      gap: 36px;
+      box-shadow: 0 4px 20px rgba(0,0,0,.05);
     }
-
     .author-avatar {
-      width: 110px; height: 110px;
+      flex-shrink: 0;
+      width: 140px; height: 140px;
       border-radius: 50%;
       overflow: hidden;
-      border: 3px solid var(--blue-mid);
-      flex-shrink: 0;
+      border: 3px solid var(--accent);
     }
+    .author-avatar img { width:100%; height:100%; object-fit:cover; }
 
-    .author-avatar img { width: 100%; height: 100%; object-fit: cover; }
-
-    .author-info h2 {
-      font-family: var(--font-display);
-      font-size: 1.8rem;
+    .author-info {}
+    .author-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 2em;
       font-weight: 800;
       color: var(--text);
       margin-bottom: 4px;
     }
-
-    .author-info .author-link {
-      font-size: 0.86rem;
-      color: var(--blue);
-      text-decoration: none;
-      display: block;
-      margin-bottom: 14px;
+    .author-link {
+      font-size:.88em; color:var(--blue); font-weight:600;
+      text-decoration:none; display:inline-block; margin-bottom:16px;
     }
-
-    .author-info .author-link:hover { text-decoration: underline; }
-
-    .author-info p { font-size: 0.92rem; color: var(--text2); line-height: 1.75; margin-bottom: 8px; }
-
+    .author-link:hover { text-decoration:underline; }
+    .author-bio {
+      font-size:.96em; color:var(--muted); line-height:1.75;
+      margin-bottom:10px;
+    }
     .author-divider {
       height: 3px;
-      background: linear-gradient(90deg, var(--orange), transparent);
+      background: linear-gradient(90deg, var(--accent), transparent);
       border-radius: 2px;
-      margin-top: 16px;
+      margin-top: 18px;
     }
 
-    /* FOOTER */
+    /* ─── FOOTER ─── */
     footer {
-      background: var(--surface);
+      background: var(--card-bg);
       border-top: 1px solid var(--border);
-      padding: 20px 40px;
+      padding: 18px 40px;
       text-align: center;
-      font-size: 0.83rem;
-      color: var(--text3);
+      font-size: .85em;
+      color: var(--muted);
     }
+    footer a { color:var(--blue); text-decoration:none; }
+    footer a:hover { text-decoration:underline; }
 
-    footer a { color: var(--blue); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      nav { padding: 10px 16px; flex-wrap: wrap; height: auto; }
-      .nav-email { display: none; }
-      .hero { padding: 40px 20px 50px; gap: 36px; }
-      .features-section { padding: 40px 20px; }
-      .content-section, .warning-section, .author-section { padding: 0 16px; margin: 40px auto; }
-      .author-card { flex-direction: column; text-align: center; padding: 26px 20px; }
-      .author-divider { width: 80px; margin: 16px auto 0; }
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; gap:12px; flex-wrap:wrap; height:auto; padding-top:10px; padding-bottom:10px; }
+      body { padding-top: 110px; }
+      .hero { padding: 40px 24px; gap:36px; }
+      .section-card { padding: 28px 24px; }
+      .author-card { flex-direction:column; text-align:center; }
+      .author-divider { background: linear-gradient(90deg, transparent, var(--accent), transparent); }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display:none; }
+      .nav-right { flex-wrap:wrap; gap:8px; }
+      .hero-title { font-size:2.8em; }
+      .qr-row { flex-direction:column; align-items:center; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
+  <!-- ═══ NAV ═══ -->
   <nav>
-    <a href="#" class="nav-logo">
+    <a class="nav-brand" href="#">
       <img src="logo.jpg" alt="QiClose Logo">
-      <span class="nav-logo-name">QiClose</span>
+      <span class="logo-txt">QiClose</span>
     </a>
 
-    <ul class="nav-center">
+    <ul class="nav-links">
       <li><a href="#">Home</a></li>
       <li><a href="#">Download</a></li>
-      <li><a href="#about-author-section">About Author</a></li>
+      <li><a href="#about-author-section">About the Author</a></li>
     </ul>
 
     <div class="nav-right">
-      <div class="nav-contact">
-        <a href="https://www.facebook.com/QiClose" target="_blank" rel="noopener noreferrer"><img src="f.svg" alt="Facebook"></a>
-        <a href="https://x.com/QiClose" target="_blank" rel="noopener noreferrer"><img src="x.png" alt="X"></a>
-        <a href="https://www.reddit.com/user/QiClose" target="_blank" rel="noopener noreferrer"><img src="r.png" alt="Reddit"></a>
-        <a href="https://discord.gg/NKaJjeGdxJ" target="_blank" rel="noopener noreferrer"><img src="D.png" alt="Discord"></a>
-        <a href="mailto:quickclosedonate@gmail.com"><img src="g.png" alt="Gmail"></a>
+      <div class="contact-strip">
+        <span class="lbl">Contact:</span>
+        <div class="contact-icons">
+          <a href="https://www.facebook.com/QiClose" target="_blank" rel="noopener"><img src="f.svg" alt="Facebook"></a>
+          <a href="https://x.com/QiClose" target="_blank" rel="noopener"><img src="x.png" alt="X"></a>
+          <a href="https://www.reddit.com/user/QiClose" target="_blank" rel="noopener"><img src="r.png" alt="Reddit"></a>
+          <a href="https://discord.gg/NKaJjeGdxJ" target="_blank" rel="noopener"><img src="D.png" alt="Discord"></a>
+          <a href="mailto:quickclosedonate@gmail.com"><img src="g.png" alt="Gmail"></a>
+        </div>
         <a class="nav-email" href="mailto:quickclosedonate@gmail.com">quickclosedonate@gmail.com</a>
       </div>
-      <div class="nav-lang">
-        <span style="font-size:0.75rem;color:var(--text3);font-weight:600;">🌍</span>
+      <div class="lang-switch">
+        <span>🌍</span>
         <a href="indexvn.html"><img src="vn.png" alt="Tiếng Việt" title="Tiếng Việt"></a>
         <a href="index.html"><img src="us.png" alt="English" title="English"></a>
       </div>
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- ═══ HERO ═══ -->
   <section class="hero">
     <div class="hero-text">
-      <div class="hero-badge">⚡ Productivity Software — Windows</div>
-
+      <div class="hero-badge">⚡ Windows Productivity Tool</div>
       <h1 class="hero-title">QiClose Tool</h1>
-
       <p class="hero-desc">
         Too many windows open? Apps running wild?<br><br>
-        QiClose lets you instantly close all open windows and running apps with a single shortcut.
-        Just press <span class="kpill">Ctrl + Alt + Backspace</span> and everything vanishes
-        in just <span class="kpill blue">1 second</span>.
+        QiClose lets you instantly close all open windows and running apps with a single shortcut. Just press
+        <span class="kbd">Ctrl + Alt + Backspace</span> and everything vanishes in
+        <span class="highlight">1 second</span>.
       </p>
 
-      <div class="hero-buttons">
+      <div class="hero-btns">
         <a href="#how-to-use-section" class="btn btn-primary">💡 How to use?</a>
-        <div class="tooltip-wrapper">
-          <a href="#warning-section" class="btn btn-caution">⚠️ Caution!</a>
-          <div class="tooltip-box">
+        <div class="tip-wrap">
+          <a href="#warning-section" class="btn btn-warn">⚠️ Caution!</a>
+          <div class="tip-box">
             <strong style="display:block;margin-bottom:6px;color:#b45309;">⚠️ Important Warning</strong>
-            🚨 Back up your data before using.<br>
-            📝 Do not add system/security apps.<br>
-            💻 Use only when PC is slow or frozen.<br>
-            👨‍💻 Best suited for tech professionals.
+            🚨 Back up your data before using QiClose.<br>
+            📝 Avoid adding system / security apps to the list.<br>
+            💻 Use only when PC is slow or RAM-overloaded.<br>
+            👨‍💻 Best suited for developers, testers, and power users.
           </div>
         </div>
-        <a href="#support-section" class="btn btn-support" id="support-me-button">💰 Support me</a>
+        <a href="#support-section" class="btn btn-donate" id="support-me-button">💰 Support me</a>
       </div>
 
-      <div class="download-block">
-        <div class="dl-label">Download for Windows</div>
-        <div class="dl-btns">
-          <a href="https://lph1994.github.io/setup.zip" class="btn-dl green">
+      <div class="download-area">
+        <h3>Download for Windows</h3>
+        <div class="download-row">
+          <a href="https://lph1994.github.io/setup.zip" class="btn-dl btn-dl-green">
             <img src="windows-10.png" alt="Windows"> Windows 10 &amp; 11 (.zip)
           </a>
-          <a href="https://lph1994.github.io/quickclose/guide.jpg" class="btn-dl blue" target="_blank" rel="noopener noreferrer">
+          <a href="https://lph1994.github.io/quickclose/guide.jpg" class="btn-dl btn-dl-blue" target="_blank" rel="noopener">
             📦 How to install?
           </a>
         </div>
       </div>
     </div>
 
-    <div class="hero-image">
-      <div class="hero-img-frame">
+    <div class="hero-visual">
+      <div class="img-card">
         <img src="newapp.jpg" alt="QiClose App Screenshot">
       </div>
     </div>
   </section>
 
-  <!-- FEATURES -->
-  <section class="features-section">
-    <div class="features-inner">
-      <div class="feature-card">
-        <div class="icon-wrap"><img src="plus-math.png" alt="Add"></div>
+  <!-- ═══ FEATURES ═══ -->
+  <section class="features-strip">
+    <div class="features-grid">
+
+      <div class="feat-card">
+        <div class="feat-icon"><img src="plus-math.png" alt="Add"></div>
         <h3>Quick Add &amp; Remove</h3>
         <p>Type a program name and click + to add. Remove instantly with the Delete key.</p>
       </div>
-      <div class="feature-card">
-        <div class="icon-wrap"><img src="keyboard.png" alt="Shortcut"></div>
+
+      <div class="feat-card">
+        <div class="feat-icon"><img src="keyboard.png" alt="Shortcut"></div>
         <h3>Custom Shortcuts</h3>
-        <p>Use <strong>Ctrl + Alt + Backspace</strong> or <strong>ALT + 1</strong> to close all apps instantly with a global hotkey.</p>
+        <p>Enable global hotkeys to close all apps quickly — <strong>Ctrl + Alt + Backspace</strong> or <strong>ALT + 1</strong>.</p>
       </div>
-      <div class="feature-card">
-        <div class="icon-wrap"><img src="play.png" alt="Startup"></div>
+
+      <div class="feat-card">
+        <div class="feat-icon"><img src="play.png" alt="Startup"></div>
         <h3>Auto Startup</h3>
-        <p>Launches automatically with Windows so it's always ready when you need it.</p>
+        <p>Launch automatically with Windows — keep it always ready to help you.</p>
       </div>
-      <div class="support-card" id="support-section">
-        <h3>☕ Make a Contribution</h3>
-        <div class="s-row"><img src="paypal.png" alt="PayPal"><span class="m">Via PayPal</span></div>
-        <div class="s-detail">
-          <a href="https://paypal.me/lph194" target="_blank" rel="noopener noreferrer">paypal.me/lph194</a><br>
-          <span>quickclosedonate@gmail.com</span>
+
+      <!-- ── DONATE CARD ── -->
+      <div class="donate-card" id="support-section">
+        <h3>💛 Make a Contribution</h3>
+
+        <div class="donate-method"><img src="paypal.png" alt="PayPal"> Via PayPal</div>
+        <div class="donate-info">
+          <a href="https://paypal.me/lph194" target="_blank" rel="noopener">paypal.me/lph194</a><br>
+          quickclosedonate@gmail.com
         </div>
-        <div class="s-row"><img src="momo.png" alt="MoMo"><span class="m">Via Zalo / MoMo</span></div>
-        <div class="s-detail"><span>0353.155.991</span></div>
-        <div class="s-row"><img src="caphe.png" alt="Ko-fi"><span class="m">Via Ko-fi</span></div>
-        <div class="s-detail">
-          <a href="https://ko-fi.com/lph194" target="_blank" rel="noopener noreferrer">ko-fi.com/lph194</a>
+
+        <div class="donate-method"><img src="momo.png" alt="MoMo"> Via Zalo / Momo Pay</div>
+        <div class="donate-info">0353.155.991</div>
+
+        <div class="donate-method"><img src="caphe.png" alt="Ko-fi"> Via Ko-fi</div>
+        <div class="donate-info">
+          <a href="https://ko-fi.com/lph194" target="_blank" rel="noopener">ko-fi.com/lph194</a>
         </div>
+
+        <!-- ── QR CODE SLOTS ── -->
+        <div class="qr-row">
+          <div class="qr-slot">
+            <!-- Thay src="your-paypal-qr.png" bằng ảnh QR thật của bạn -->
+            <img src="your-paypal-qr.png" alt="PayPal QR"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="qr-placeholder" style="display:none;">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+                <rect x="3" y="14" width="7" height="7" rx="1"/>
+                <circle cx="17.5" cy="17.5" r="2.5"/>
+              </svg>
+              QR Placeholder
+            </div>
+            <span class="qr-label">PayPal / Ko-fi</span>
+          </div>
+
+          <div class="qr-slot">
+            <!-- Thay src="your-momo-qr.png" bằng ảnh QR thật của bạn -->
+            <img src="your-momo-qr.png" alt="MoMo QR"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="qr-placeholder" style="display:none;">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+                <rect x="3" y="14" width="7" height="7" rx="1"/>
+                <circle cx="17.5" cy="17.5" r="2.5"/>
+              </svg>
+              QR Placeholder
+            </div>
+            <span class="qr-label">Zalo / MoMo</span>
+          </div>
+        </div>
+        <!-- END QR -->
+
       </div>
+      <!-- END DONATE CARD -->
+
     </div>
   </section>
 
-  <!-- HOW TO USE -->
-  <section id="how-to-use-section" class="content-section">
-    <h2 class="section-heading">💡 How to use QiClose</h2>
-    <p class="section-sub">Get started in under a minute — follow these steps.</p>
+  <!-- ═══ HOW TO USE ═══ -->
+  <div class="section-wrap" id="how-to-use-section">
+    <div class="section-card">
+      <h2 class="section-title">💡 How to Use QiClose</h2>
+      <div class="steps">
 
-    <div class="steps-list">
-      <div class="step-block">
-        <div class="step-header">
-          <div class="step-num">1</div>
-          <p class="step-text"><strong>Type the program name.</strong> When the suggestions box appears, click the one you want to fill in the yellow input field.</p>
+        <div class="step">
+          <div class="step-header">
+            <div class="step-num">1</div>
+            <p class="step-text">📝 Type the program name. When the <strong>suggestions box</strong> appears, click the one you want to fill in the input field.</p>
+          </div>
+          <img src="step1.jpg" alt="Step 1" class="step-img">
         </div>
-        <img src="step1.jpg" alt="Step 1" class="step-img">
-      </div>
+        <div class="step-divider"></div>
 
-      <div class="step-block">
-        <div class="step-header">
-          <div class="step-num">2</div>
-          <p class="step-text">Click the <strong>+ button</strong> to add the program (e.g., Firefox) to the yellow note on the right side.</p>
+        <div class="step">
+          <div class="step-header">
+            <div class="step-num">2</div>
+            <p class="step-text">➕ Click the <strong>+</strong> button to add the program (e.g., Firefox) to the list on the right side.</p>
+          </div>
+          <img src="step2.jpg" alt="Step 2" class="step-img">
         </div>
-        <img src="step2.jpg" alt="Step 2" class="step-img">
-      </div>
+        <div class="step-divider"></div>
 
-      <div class="step-block">
-        <div class="step-header">
-          <div class="step-num">3</div>
-          <p class="step-text">Repeat Steps 1 &amp; 2 for other apps (e.g., Telegram, Word...). Then click <strong>"Hide"</strong> to minimize to the system tray: <img src="tray.png" class="tray-img" alt="system tray"></p>
+        <div class="step">
+          <div class="step-header">
+            <div class="step-num">3</div>
+            <p class="step-text">🔁 Repeat Steps 1 &amp; 2 for other apps (e.g., Telegram, Word…), then click <strong>"Hide"</strong> to minimize to the system tray.
+              <img src="tray.png" class="tray-img" alt="tray icon">
+            </p>
+          </div>
+          <img src="step3.jpg" alt="Step 3" class="step-img">
         </div>
-        <img src="step3.jpg" alt="Step 3" class="step-img">
-      </div>
+        <div class="step-divider"></div>
 
-      <div class="step-block">
-        <div class="step-header">
-          <div class="step-num">4</div>
-          <p class="step-text">Press the shortcut key: <span class="kpill">Ctrl + Alt + Backspace</span> or <span class="kpill">ALT + 1</span></p>
+        <div class="step">
+          <div class="step-header">
+            <div class="step-num">4</div>
+            <p class="step-text">▶️ Press the shortcut key <strong>Ctrl + Alt + Backspace</strong> or <strong>ALT + 1</strong>.</p>
+          </div>
+          <img src="step4.jpg" alt="Step 4" class="step-img">
         </div>
-        <img src="step4.jpg" alt="Step 4" class="step-img">
-      </div>
+        <div class="step-divider"></div>
 
-      <div class="step-block">
-        <div class="step-header">
-          <div class="step-num done">✓</div>
-          <p class="step-text"><strong>Done!</strong> Your app list is saved. From now on, just press <span class="kpill">Ctrl + Alt + Backspace</span> and your screen and RAM are instantly clear.</p>
+        <div class="step">
+          <div class="step-header">
+            <div class="step-num" style="background:var(--green);">✓</div>
+            <p class="step-text">✅ <strong>Done!</strong> Your apps are remembered. From now on, just press <strong>Ctrl + Alt + Backspace</strong> — screen and memory instantly clean.</p>
+          </div>
+          <img src="done.jpg" alt="Done" class="step-img">
         </div>
-        <img src="done.jpg" alt="Done" class="step-img">
-        <div class="guide-link-box">
-          🗺️ Full feature guide:&nbsp;
-          <a href="https://www.dropbox.com/scl/fi/2guivhtlj676hwwmhjx00/QiClose_guide.pdf?rlkey=uxdtlg41xmhb4cu0y2v8lclvi&st=4sn8qbta&dl=0" target="_blank" rel="noopener noreferrer">⬇ QiClose_User_Guide.pdf</a>
+
+        <div class="pdf-row">
+          🗺️ Full feature guide:
+          <a href="https://www.dropbox.com/scl/fi/2guivhtlj676hwwmhjx00/QiClose_guide.pdf?rlkey=uxdtlg41xmhb4cu0y2v8lclvi&st=4sn8qbta&dl=0" target="_blank" rel="noopener">⏬ QiClose_User_Guide.pdf</a>
           &nbsp;|&nbsp;
-          <a href="https://drive.google.com/file/d/13I6qglGItcPcrRwwo3KFjN2insDPeLcb/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Google Drive</a>
+          <a href="https://drive.google.com/file/d/13I6qglGItcPcrRwwo3KFjN2insDPeLcb/view?usp=drive_link" target="_blank" rel="noopener">Google Drive</a>
           &nbsp;|&nbsp;
-          <a href="https://www.dropbox.com/scl/fi/2guivhtlj676hwwmhjx00/QiClose_guide.pdf?rlkey=uxdtlg41xmhb4cu0y2v8lclvi&st=4sn8qbta&dl=0" target="_blank" rel="noopener noreferrer">Dropbox</a>
+          <a href="https://www.dropbox.com/scl/fi/2guivhtlj676hwwmhjx00/QiClose_guide.pdf?rlkey=uxdtlg41xmhb4cu0y2v8lclvi&st=4sn8qbta&dl=0" target="_blank" rel="noopener">Dropbox</a>
         </div>
+
       </div>
-    </div>
-  </section>
-
-  <!-- USE WITH CHATGPT -->
-  <section id="how-to-use-chatgpt" class="content-section" style="margin-top:0;">
-    <h2 class="section-heading">💬 Use QiClose With ChatGPT</h2>
-    <p class="section-sub">Can't find your app in the list? Ask ChatGPT for the .exe name and add it.</p>
-
-    <div class="steps-list">
-      <div class="step-block">
-        <div class="step-header">
-          <div class="step-num">1</div>
-          <p class="step-text">Click the <strong>GPT button</strong> inside QiClose.</p>
-        </div>
-        <img src="step11.jpg" alt="Step 1 GPT" class="step-img">
-      </div>
-
-      <div class="step-block">
-        <div class="step-header">
-          <div class="step-num">2</div>
-          <p class="step-text">When ChatGPT opens in your browser, type: <em>"What exe file name of [your application]?"</em><br>
-          Example: "What exe file name of CapCut PC" → Answer: <strong>Capcut.exe</strong></p>
-        </div>
-        <img src="step22.jpg" alt="Step 2 GPT" class="step-img">
-      </div>
-
-      <div class="step-block">
-        <div class="step-header">
-          <div class="step-num">3</div>
-          <p class="step-text">Copy <strong>Capcut.exe</strong> into the input field and click <strong>Add</strong>. CapCut is now in your QuickClose list.</p>
-        </div>
-        <img src="step33.jpg" alt="Step 3 GPT" class="step-img">
-      </div>
-
-      <div class="step-block">
-        <div class="step-header">
-          <div class="step-num done">✓</div>
-          <p class="step-text"><strong>Done!</strong> Press <span class="kpill">Ctrl + Alt + Backspace</span> — it will close together with all other apps in your list.</p>
-        </div>
-        <img src="step4.jpg" alt="Step 4 GPT" class="step-img">
-      </div>
-    </div>
-  </section>
-
-  <!-- WARNING -->
-  <div class="warning-section" id="warning-section">
-    <h2 class="section-heading">⚠️ Important Warning</h2>
-    <div class="warning-box">
-      <p>
-        🚨 <strong>Back up your data</strong> before using QiClose to close all apps.<br>
-        📝 <strong>Avoid adding system or security applications</strong> — closing them may cause errors or affect system stability.<br>
-        💻 <strong>Only use when your PC is slow, frozen, or RAM-overloaded</strong> — not as a daily habit.<br>
-        🚫 This tool is powerful but <strong>cannot replace manual app management</strong> in all situations.<br>
-        👨‍💻 <strong>Best suited for tech professionals</strong> — developers, testers, debuggers, or miners who understand system processes.
-      </p>
     </div>
   </div>
 
-  <!-- AUTHOR -->
-  <section class="author-section" id="about-author-section">
+  <!-- ═══ USE WITH CHATGPT ═══ -->
+  <div class="section-wrap" id="how-to-use-chatgpt">
+    <div class="section-card">
+      <h2 class="section-title">💬 Use QiClose With ChatGPT</h2>
+      <p style="text-align:center;color:var(--muted);margin-bottom:32px;font-size:.96em;">
+        Can't find your software? Use ChatGPT to look up the exact <code style="background:var(--blue-pale);color:var(--blue);padding:2px 6px;border-radius:5px;">.exe</code> filename and add it to the list!
+      </p>
+      <div class="steps">
+
+        <div class="step">
+          <div class="step-header">
+            <div class="step-num">1</div>
+            <p class="step-text">🔍 Click the <strong>"GPT" button</strong> inside QiClose.</p>
+          </div>
+          <img src="step11.jpg" alt="Step 1" class="step-img">
+        </div>
+        <div class="step-divider"></div>
+
+        <div class="step">
+          <div class="step-header">
+            <div class="step-num">2</div>
+            <p class="step-text">🔍 Type: <strong>"What exe file name of [your_application]?"</strong> — e.g., <em>"What exe file name of CapCut PC"</em> → answer: <strong>Capcut.exe</strong></p>
+          </div>
+          <img src="step22.jpg" alt="Step 2" class="step-img">
+        </div>
+        <div class="step-divider"></div>
+
+        <div class="step">
+          <div class="step-header">
+            <div class="step-num">3</div>
+            <p class="step-text">⚙️ Copy <strong>"Capcut.exe"</strong> into the input field and click the <strong>Add button</strong>. CapCut is now in the QiClose list.</p>
+          </div>
+          <img src="step33.jpg" alt="Step 3" class="step-img">
+        </div>
+        <div class="step-divider"></div>
+
+        <div class="step">
+          <div class="step-header">
+            <div class="step-num">4</div>
+            <p class="step-text">📌 Press <strong>Ctrl + Alt + Backspace</strong> then <strong>Enter</strong> — CapCut will close together with all other programs in your list.</p>
+          </div>
+          <img src="step4.jpg" alt="Step 4" class="step-img">
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ WARNING ═══ -->
+  <div class="section-wrap" id="warning-section">
+    <div class="section-card warn-card">
+      <h2 class="section-title">⚠️ Extremely Important Warning</h2>
+      <div class="warn-text">
+        <p>🚨 <strong>Back up your data</strong> before using QiClose to close all your apps.</p>
+        <p>📝 <strong>Avoid adding system or security applications</strong> to the quick-close list. Closing such apps may cause errors or affect system stability.</p>
+        <p>💻 Use QiClose <strong>only when your computer is slow, frozen, or experiencing RAM overload</strong> that leads to system congestion.</p>
+        <p>🚫 Although very useful, QiClose <strong>cannot replace or outperform manually closing apps yourself</strong>.</p>
+        <p>👨‍💻 This software is especially suitable for <strong>tech professionals</strong> such as debuggers, testers, developers, or miners — those who truly understand system processes and application workflows.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ AUTHOR ═══ -->
+  <div class="author-wrap" id="about-author-section">
     <div class="author-card">
       <div class="author-avatar">
         <img src="your-avatar.jpg" alt="Author Avatar">
       </div>
       <div class="author-info">
-        <h2>LPH</h2>
-        <a class="author-link" href="https://www.facebook.com/MidasAnder" target="_blank" rel="noopener noreferrer">
+        <h2 class="author-name">LPH</h2>
+        <a href="https://www.facebook.com/MidasAnder" class="author-link" target="_blank" rel="noopener">
           facebook.com/MidasAnder
         </a>
-        <p>After the COVID-19 pandemic, my work and personal life faced many difficulties. But instead of giving up, I chose to move forward and wanted to create something truly meaningful for this life.</p>
-        <p>This application is not just a simple support tool. It gradually became a spiritual companion, helping me get through some of the darkest moments.</p>
+        <p class="author-bio">
+          After the COVID-19 pandemic, my work and personal life faced many difficulties. But instead of giving up, I chose to move forward and wanted to create something truly meaningful for this life.
+        </p>
+        <p class="author-bio">
+          This application is not just a simple support tool. It gradually became a spiritual companion, helping me get through some of the darkest moments.
+        </p>
         <div class="author-divider"></div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- FOOTER -->
+  <!-- ═══ FOOTER ═══ -->
   <footer>
-    © 2025 QiClose &nbsp;|&nbsp;
-    <a href="mailto:quickclosedonate@gmail.com">quickclosedonate@gmail.com</a>
-    &nbsp;|&nbsp;
-    <a href="https://paypal.me/lph194" target="_blank" rel="noopener noreferrer">Support via PayPal</a>
+    © 2025 QiClose &nbsp;|&nbsp; Contact: <a href="mailto:quickclosedonate@gmail.com">quickclosedonate@gmail.com</a> &nbsp;|&nbsp; Support: <a href="https://paypal.me/lph194" target="_blank" rel="noopener">paypal.me/lph194</a>
   </footer>
 
   <script>
     document.getElementById('support-me-button').addEventListener('click', function(e) {
       e.preventDefault();
       const el = document.getElementById('support-section');
-      el.style.transition = 'background 0.4s';
-      el.style.background = '#fce7f3';
-      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      setTimeout(() => { el.style.background = ''; }, 1600);
+      el.style.transition = 'box-shadow .3s, transform .3s';
+      el.style.boxShadow = '0 0 0 3px #93c5fd, 0 12px 40px rgba(37,99,235,.2)';
+      el.scrollIntoView({ behavior:'smooth', block:'center' });
+      setTimeout(() => { el.style.boxShadow = ''; }, 1800);
     });
   </script>
-
 </body>
 </html>
