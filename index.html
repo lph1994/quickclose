@@ -148,47 +148,27 @@
       margin-bottom: 20px;
     }
 
-   .hero-tittle {
-  position: relative;
-  display: block;
-  font-weight: bold;
-  background: linear-gradient(270deg, #0072ff, #0083e5, #1673ff, #0093e0, #2f6bff);
-    background-size: auto;
-    background-clip: border-box;
-  background-size: 800% 800%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: smoothFlow 3s linear infinite;
-  overflow: hidden;
-  font-size: 90px;
+    .hero-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 3.8em;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 22px;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      display: inline-block;
     }
 
-   @keyframes smoothFlow {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
-}
-
-.hero-title::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -75%;
-  height: 100%;
-  width: 50%;
-  background: linear-gradient(120deg,
-    transparent, rgba(255,255,255,0.5), transparent);
-  transform: skewX(-20deg);
-  animation: shineSweep 2s infinite;
-}
-
-@keyframes shineSweep {
-  0% { left: -75%; }
-  100% { left: 125%; }
-}
-@keyframes shineSweep {
-  0% { left: -75%; }
-  100% { left: 125%; }
-}
+    @keyframes shimmer {
+      0%   { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    .hero-title {
+      background-size: 200% auto;
+      animation: shimmer 4s linear infinite;
+    }
 
     .hero-desc {
       font-size: 1.05em;
