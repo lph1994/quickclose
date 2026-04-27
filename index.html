@@ -45,7 +45,7 @@
       justify-content: space-between;
       gap: 24px;
       padding: 0 40px;
-      background: rgba(255,255,255,0.92);
+      background: rgba(255,255,255,0.95);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       box-shadow: 0 1px 12px rgba(0,0,0,0.06);
@@ -103,8 +103,7 @@
     .contact-icons a img:hover { transform:scale(1.15); box-shadow:0 4px 10px rgba(0,0,0,0.15); }
     .nav-email {
       font-size:.82em; color:var(--blue); font-weight:600;
-      text-decoration:none;
-      white-space:nowrap;
+      text-decoration:none; white-space:nowrap;
     }
     .nav-email:hover { text-decoration:underline; }
 
@@ -119,236 +118,256 @@
     .lang-switch img:hover { transform:scale(1.12); }
 
     /* ─── HERO ─── */
+    .hero-wrapper {
+      background: linear-gradient(160deg, #f0f6ff 0%, #ffffff 60%);
+      padding: 56px 60px 48px;
+    }
+
     .hero {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 60px;
-      padding: 72px 60px 60px;
+      justify-content: space-between;
+      gap: 48px;
       max-width: 1100px;
       margin: 0 auto;
-      flex-wrap: wrap;
-    }
-
-    .hero-text { flex: 1 1 360px; max-width: 526px; text-align: center;}
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--blue-pale);
-      color: var(--blue);
-      font-size: .78em;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      padding: 5px 12px;
-      border-radius: 99px;
-      margin-bottom: 20px;
-      margin-top: 5px;
-    }
-
-    .hero-title {
       position: relative;
-      display: block;
-      font-weight: bold;
-      background: linear-gradient(270deg, #0072ff, #0083e5, #1673ff, #0093e0, #2f6bff);
-      background-size: 800% 800%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: smoothFlow 3s linear infinite;
-      overflow: hidden;
-      font-size: 69px;
     }
 
-    @keyframes smoothFlow {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 100% 50%; }
+    .hero-text {
+      flex: 1 1 480px;
+      max-width: 520px;
     }
 
-    .hero-title::before {
-      content: '';
+    /* Windows badge top right of hero */
+    .hero-win-badge {
       position: absolute;
       top: 0;
-      left: -75%;
-      height: 100%;
-      width: 50%;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
-      transform: skewX(-20deg);
-      animation: shineSweep 2s infinite;
-    }
-
-    @keyframes shineSweep {
-      0% { left: -75%; }
-      100% { left: 125%; }
-    }
-
-    .hero-desc {
-      font-size: 1.05em;
-      color: var(--muted);
-      line-height: 1.75;
-      margin-bottom: 32px;
-    }
-    .hero-desc strong { color: var(--text); }
-    .hero-desc .kbd {
-      display: inline-block;
-      background: #f97424;
-      color: #fff;
-      font-size: .82em;
-      font-weight: 700;
-      padding: 1px 10px;
-      border-radius: 9px;
-      letter-spacing: .04em;
-    }
-    .hero-desc .highlight { color: #ff5400; font-weight: 700; }
-
-    /* ─── KEYBOARD SHORTCUT HERO DISPLAY ─── */
-    .kbd-hero-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      background: #eef2ff;
-      border-radius: 20px;
-      padding: 24px 32px;
-      margin-bottom: 14px;
-      border: 1px solid #c7d7fe;
-      box-shadow: 0 4px 20px rgba(37,99,235,0.10);
-    }
-    .kbd-hero {
-     display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: #575757;
-  color: #fff;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 1.08em;
-  font-weight: 800;
-  padding: 8px 19px;
-  border-radius: 14px;
-  box-shadow: 0 5px 0 #0c1629, 0 8px 20px rgba(0,0,0,0.28);
-  letter-spacing: 0.02em;
-  min-width: 77px;
-  text-align: center;
-  transition: transform .15s, box-shadow .15s;
-    }
-    .kbd-hero:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 0 #0c1629, 0 12px 28px rgba(0,0,0,0.3);
-    }
-    .kbd-plus {
-      color: #94a3b8;
-      font-size: 1.4em;
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-    .kbd-tagline {
-      text-align: center;
-      font-size: .9em;
-      color: #64748b;
-      margin-bottom: 24px;
-      font-weight: 600;
-      letter-spacing: .01em;
-    }
-
-    .hero-btns {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 30px;
-    }
-
-    .btn {
+      right: 0;
       display: inline-flex;
       align-items: center;
       gap: 7px;
-      padding: 10px 21px;
-      border-radius: 15px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1d4ed8;
+      font-size: .82em;
       font-weight: 700;
-      font-size: .92em;
-      text-decoration: none;
-      transition: transform .18s, box-shadow .18s, background .18s;
-      cursor: pointer;
-      border: none;
+      padding: 6px 14px;
+      border-radius: 10px;
     }
-    .btn:hover { transform: translateY(-2px); }
+    .hero-win-badge img { width: 18px; height: 18px; }
 
-    .btn-primary {
-      background: #0087ff;
-      color: #fff;
-      box-shadow: 0 4px 16px rgba(37,99,235,.35);
+    /* Main headline */
+    .hero-headline {
+      margin-top: 8px;
+      margin-bottom: 6px;
     }
-    .btn-primary:hover { background: #1d4ed8; box-shadow: 0 6px 22px rgba(37,99,235,.45); }
-
-    .btn-warn {
-      background: #0087ff;
-      box-shadow: 0 6px 22px rgba(37,99,235,.45);
-      color: white;
+    .hero-headline .line1 {
+      display: block;
+      font-size: 2.55em;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.15;
+      letter-spacing: -.02em;
     }
-    .btn-warn:hover { background: #1d4ed8; transform: translateY(-2px); }
-
-    .btn-donate {
-      background: var(--accent2);
-      color: #fff;
-      box-shadow: 0 4px 14px rgba(6,182,212,.3);
+    .hero-headline .line2 {
+      display: block;
+      font-size: 2.55em;
+      font-weight: 800;
+      color: var(--blue);
+      line-height: 1.15;
+      letter-spacing: -.02em;
     }
-    .btn-donate:hover { background: #0891b2; }
 
-    /* ─── DOWNLOAD AREA ─── */
-    .download-area { margin-top: 4px; }
-    .download-area h3 {
-      font-size: .88em;
-      text-transform: uppercase;
-      letter-spacing: .08em;
+    .hero-sub {
+      font-size: 1em;
       color: var(--muted);
-      font-weight: 700;
-      margin-bottom: 12px;
+      margin: 16px 0 20px;
+      line-height: 1.65;
     }
-    .download-row { display: flex; gap: 10px; flex-wrap: wrap; flex-direction: column; }
+    .hero-sub .highlight { color: var(--blue); font-weight: 700; }
 
-    /* MAIN DOWNLOAD BUTTON - large & prominent */
+    /* ─── KEYBOARD SHORTCUT ─── */
+    .kbd-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .kbd-key {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      color: #1e293b;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: .98em;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: 1.5px solid #cbd5e1;
+      box-shadow: 0 4px 0 #94a3b8;
+      letter-spacing: 0.01em;
+      min-width: 64px;
+      text-align: center;
+    }
+    .kbd-plus {
+      color: #94a3b8;
+      font-size: 1.3em;
+      font-weight: 700;
+    }
+
+    /* ─── FEATURE BADGES ─── */
+    .feat-badges {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .feat-badge {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 7px 11px;
+      font-size: .78em;
+      font-weight: 600;
+      color: var(--text);
+      box-shadow: 0 1px 4px rgba(0,0,0,.05);
+    }
+    .feat-badge .badge-icon {
+      width: 18px; height: 18px;
+      border-radius: 4px;
+      display: flex; align-items:center; justify-content:center;
+      font-size: 12px;
+    }
+    .badge-green { background: #dcfce7; color: #16a34a; }
+    .badge-teal  { background: #ccfbf1; color: #0d9488; }
+    .badge-red   { background: #fee2e2; color: #dc2626; }
+    .badge-blue  { background: var(--blue-pale); color: var(--blue); }
+    .feat-badge .badge-label { color: var(--muted); font-size: .9em; font-weight: 500; }
+
+    /* ─── DOWNLOAD BUTTON ─── */
     .btn-dl-main {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
       width: 100%;
-      padding: 17px 28px;
-      border-radius: 16px;
+      max-width: 340px;
+      padding: 16px 28px;
+      border-radius: 14px;
       background: linear-gradient(135deg, #1a6ef5 0%, #0ea5e9 100%);
       color: #fff;
       font-weight: 800;
-      font-size: 1.08em;
+      font-size: 1.05em;
       text-decoration: none;
       box-shadow: 0 6px 24px rgba(37,99,235,.42);
       transition: transform .18s, box-shadow .18s;
-      letter-spacing: .01em;
+      margin-bottom: 10px;
     }
     .btn-dl-main:hover {
       transform: translateY(-3px);
       box-shadow: 0 10px 34px rgba(37,99,235,.52);
-      background: linear-gradient(135deg, #1558d6 0%, #0891b2 100%);
     }
-    .btn-dl-main .dl-icon { font-size: 1.15em; }
+    .btn-dl-sub {
+      font-size: .8em;
+      font-weight: 500;
+      opacity: .85;
+      display: block;
+      text-align: center;
+    }
 
-    .btn-dl {
+    .btn-dl-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      color: var(--blue);
+      font-size: .9em;
+      font-weight: 600;
+      text-decoration: none;
+      margin-top: 4px;
+    }
+    .btn-dl-link:hover { text-decoration: underline; }
+
+    /* ─── STATS BAR ─── */
+    .stats-bar {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin-top: 24px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,.05);
+      max-width: 400px;
+    }
+    .stat-item {
+      flex: 1;
+      padding: 14px 18px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-val {
+      font-size: 1.2em;
+      font-weight: 800;
+      color: var(--text);
+      display: block;
+    }
+    .stat-label {
+      font-size: .75em;
+      color: var(--muted);
+      font-weight: 500;
+      display: block;
+      margin-top: 2px;
+    }
+    .stars { color: #f59e0b; font-size: .85em; letter-spacing: 1px; }
+
+    /* ─── HERO VISUAL ─── */
+    .hero-visual {
+      flex: 0 0 380px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-visual img {
+      width: 380px;
+      max-width: 100%;
+      filter: drop-shadow(0 20px 40px rgba(37,99,235,.18));
+    }
+
+    /* ─── ACTION BTNS ROW ─── */
+    .action-btns {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+      margin-bottom: 6px;
+    }
+    .btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 10px 18px;
-      border-radius: 15px;
+      gap: 7px;
+      padding: 10px 20px;
+      border-radius: 12px;
       font-weight: 700;
-      font-size: .88em;
+      font-size: .9em;
       text-decoration: none;
-      transition: transform .18s, box-shadow .18s;
-      justify-content: center;
+      transition: transform .18s, box-shadow .18s, background .18s;
+      cursor: pointer;
+      border: none;
     }
-    .btn-dl:hover { transform: translateY(-2px); }
-    .btn-dl-green { background: #0087ff; box-shadow: 0 6px 22px rgba(37,99,235,.45); color: white; }
-    .btn-dl-green:hover { background: #1d4ed8; transform: translateY(-2px); }
-    .btn-dl-blue  { background: #eff6ff; color: var(--blue); border: 1px solid #bfdbfe; }
-    .btn-dl-blue:hover { background: #dbeafe; box-shadow: 0 4px 14px rgba(37,99,235,.15); }
-    .btn-dl img { width:16px; height:16px; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: #2563eb; color: #fff; box-shadow: 0 4px 16px rgba(37,99,235,.3); }
+    .btn-primary:hover { background: #1d4ed8; }
+    .btn-warn { background: #2563eb; color: white; box-shadow: 0 4px 14px rgba(37,99,235,.3); }
+    .btn-warn:hover { background: #1d4ed8; }
+    .btn-donate { background: var(--accent2); color: #fff; box-shadow: 0 4px 14px rgba(6,182,212,.3); }
+    .btn-donate:hover { background: #0891b2; }
 
     /* Tooltip */
     .tip-wrap { position:relative; display:inline-block; }
@@ -371,10 +390,6 @@
       transition: opacity .25s;
     }
     .tip-wrap:hover .tip-box { visibility:visible; opacity:1; }
-
-    /* ─── HERO IMAGE ─── */
-    .hero-visual { flex: 1 1 300px; max-width: 380px; display:flex; justify-content:center; }
-    .img-card img { width:360px; }
 
     /* ─── FEATURES STRIP ─── */
     .features-strip {
@@ -426,249 +441,75 @@
       transition: box-shadow .2s, transform .2s;
     }
     .donate-card:hover { box-shadow: 0 8px 28px rgba(37,99,235,.12); transform:translateY(-3px); }
-
-    .donate-card h3 {
-      font-size:.98em; font-weight:800; color: var(--blue);
-      text-align:center; margin-bottom:14px;
-    }
-
-    .donate-method {
-      display:flex; align-items:center; gap:7px;
-      font-size:.84em; font-weight:700; color:var(--text);
-      margin-bottom:3px;
-    }
+    .donate-card h3 { font-size:.98em; font-weight:800; color:var(--blue); text-align:center; margin-bottom:14px; }
+    .donate-method { display:flex; align-items:center; gap:7px; font-size:.84em; font-weight:700; color:var(--text); margin-bottom:3px; }
     .donate-method img { width:18px; height:18px; border-radius:3px; }
-
-    .donate-info {
-      font-size:.82em; color:var(--muted);
-      padding-left:25px;
-      margin-bottom:8px;
-      line-height:1.6;
-    }
+    .donate-info { font-size:.82em; color:var(--muted); padding-left:25px; margin-bottom:8px; line-height:1.6; }
     .donate-info a { color:var(--blue); text-decoration:none; font-weight:600; }
     .donate-info a:hover { text-decoration:underline; }
-
-    .qr-row {
-      display: flex;
-      gap: 12px;
-      margin-top: 10px;
-      justify-content: center;
-    }
-    .qr-slot {
-      flex: 1;
-      border: 2px dashed #93c5fd;
-      border-radius: 12px;
-      padding: 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      background: rgba(255,255,255,.7);
-      min-height: 120px;
-      justify-content: center;
-    }
-    .qr-slot img {
-      width: 100%;
-      max-width: 90px;
-      height: auto;
-      border-radius: 6px;
-      display: block;
-    }
-    .qr-slot .qr-label {
-      font-size: .75em;
-      font-weight: 700;
-      color: var(--blue);
-      text-align: center;
-    }
-    .qr-placeholder {
-      width: 80px; height: 80px;
-      background: #dbeafe;
-      border-radius: 8px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      color: var(--blue);
-      font-size: .7em;
-      font-weight: 700;
-      text-align: center;
-    }
-    .qr-placeholder svg { opacity:.5; }
+    .qr-row { display:flex; gap:12px; margin-top:10px; justify-content:center; }
+    .qr-slot { flex:1; border:2px dashed #93c5fd; border-radius:12px; padding:10px; display:flex; flex-direction:column; align-items:center; gap:6px; background:rgba(255,255,255,.7); min-height:120px; justify-content:center; }
+    .qr-slot img { width:100%; max-width:90px; height:auto; border-radius:6px; display:block; }
+    .qr-slot .qr-label { font-size:.75em; font-weight:700; color:var(--blue); text-align:center; }
+    .qr-placeholder { width:80px; height:80px; background:#dbeafe; border-radius:8px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; color:var(--blue); font-size:.7em; font-weight:700; text-align:center; }
 
     /* ─── SECTION CONTAINER ─── */
-    .section-wrap {
-      max-width: 860px;
-      margin: 56px auto;
-      padding: 0 24px;
-    }
-
-    .section-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 44px 48px;
-      box-shadow: 0 4px 20px rgba(0,0,0,.05);
-    }
-
-    .section-card.warn-card {
-      background: var(--warn-bg);
-      border-color: var(--warn-border);
-    }
-
-    .section-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 2em;
-      font-weight: 800;
-      color: var(--blue);
-      margin-bottom: 36px;
-      text-align: center;
-    }
-    .warn-card .section-title { color: #b45309; }
-
+    .section-wrap { max-width: 860px; margin: 56px auto; padding: 0 24px; }
+    .section-card { background:var(--white); border:1px solid var(--border); border-radius:20px; padding:44px 48px; box-shadow:0 4px 20px rgba(0,0,0,.05); }
+    .section-card.warn-card { background:var(--warn-bg); border-color:var(--warn-border); }
+    .section-title { font-family:'Syne',sans-serif; font-size:2em; font-weight:800; color:var(--blue); margin-bottom:36px; text-align:center; }
+    .warn-card .section-title { color:#b45309; }
     .steps { display:flex; flex-direction:column; gap:40px; }
-
-    .step {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .step-header {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-    }
-    .step-num {
-      flex-shrink: 0;
-      width: 32px; height: 32px;
-      background: var(--blue);
-      color: #fff;
-      border-radius: 50%;
-      display: flex; align-items:center; justify-content:center;
-      font-size: .85em;
-      font-weight: 800;
-    }
-    .step-text {
-      font-size: .97em;
-      color: var(--text);
-      line-height: 1.7;
-    }
-    .step-text strong { color: var(--blue); }
-
-    .step-img {
-      width: 100%;
-      max-width: 560px;
-      margin: 0 auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 20px rgba(249,115,22,.18), 0 0 0 1px rgba(249,115,22,.1);
-      display: block;
-    }
-
-    .step-divider {
-      width: 100%;
-      height: 1px;
-      background: var(--border);
-    }
-
+    .step { display:flex; flex-direction:column; gap:14px; }
+    .step-header { display:flex; align-items:flex-start; gap:14px; }
+    .step-num { flex-shrink:0; width:32px; height:32px; background:var(--blue); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:.85em; font-weight:800; }
+    .step-text { font-size:.97em; color:var(--text); line-height:1.7; }
+    .step-text strong { color:var(--blue); }
+    .step-img { width:100%; max-width:560px; margin:0 auto; border-radius:10px; box-shadow:0 4px 20px rgba(249,115,22,.18),0 0 0 1px rgba(249,115,22,.1); display:block; }
+    .step-divider { width:100%; height:1px; background:var(--border); }
     .tray-img { display:inline; vertical-align:middle; height:22px; width:auto; border-radius:4px; }
-
-    .pdf-row {
-      text-align: center;
-      margin-top: 20px;
-      padding: 16px;
-      background: var(--blue-pale);
-      border-radius: 12px;
-      font-size: .9em;
-      color: var(--muted);
-    }
+    .pdf-row { text-align:center; margin-top:20px; padding:16px; background:var(--blue-pale); border-radius:12px; font-size:.9em; color:var(--muted); }
     .pdf-row a { color:var(--blue); font-weight:700; text-decoration:none; }
     .pdf-row a:hover { text-decoration:underline; }
-
-    .warn-text {
-      font-size: .97em;
-      color: var(--warn-text);
-      line-height: 1.8;
-    }
-    .warn-text p { margin-bottom: 12px; }
+    .warn-text { font-size:.97em; color:var(--warn-text); line-height:1.8; }
+    .warn-text p { margin-bottom:12px; }
     .warn-text p:last-child { margin-bottom:0; }
 
     /* ─── ABOUT AUTHOR ─── */
-    .author-wrap {
-      max-width: 860px;
-      margin: 0 auto 80px;
-      padding: 0 24px;
-    }
-    .author-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 40px 48px;
-      display: flex;
-      align-items: center;
-      gap: 36px;
-      box-shadow: 0 4px 20px rgba(0,0,0,.05);
-    }
-    .author-avatar {
-      flex-shrink: 0;
-      width: 140px; height: 140px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 3px solid var(--accent);
-    }
+    .author-wrap { max-width:860px; margin:0 auto 80px; padding:0 24px; }
+    .author-card { background:var(--white); border:1px solid var(--border); border-radius:20px; padding:40px 48px; display:flex; align-items:center; gap:36px; box-shadow:0 4px 20px rgba(0,0,0,.05); }
+    .author-avatar { flex-shrink:0; width:140px; height:140px; border-radius:50%; overflow:hidden; border:3px solid var(--accent); }
     .author-avatar img { width:100%; height:100%; object-fit:cover; }
-
-    .author-name {
-      font-family: 'Syne', sans-serif;
-      font-size: 2em;
-      font-weight: 800;
-      color: var(--text);
-      margin-bottom: 4px;
-    }
-    .author-link {
-      font-size:.88em; color:var(--blue); font-weight:600;
-      text-decoration:none; display:inline-block; margin-bottom:16px;
-    }
+    .author-name { font-family:'Syne',sans-serif; font-size:2em; font-weight:800; color:var(--text); margin-bottom:4px; }
+    .author-link { font-size:.88em; color:var(--blue); font-weight:600; text-decoration:none; display:inline-block; margin-bottom:16px; }
     .author-link:hover { text-decoration:underline; }
-    .author-bio {
-      font-size:.96em; color:var(--muted); line-height:1.75;
-      margin-bottom:10px;
-    }
-    .author-divider {
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent), transparent);
-      border-radius: 2px;
-      margin-top: 18px;
-    }
+    .author-bio { font-size:.96em; color:var(--muted); line-height:1.75; margin-bottom:10px; }
+    .author-divider { height:3px; background:linear-gradient(90deg,var(--accent),transparent); border-radius:2px; margin-top:18px; }
 
     /* ─── FOOTER ─── */
-    footer {
-      background: var(--card-bg);
-      border-top: 1px solid var(--border);
-      padding: 18px 40px;
-      text-align: center;
-      font-size: .85em;
-      color: var(--muted);
-    }
+    footer { background:var(--card-bg); border-top:1px solid var(--border); padding:18px 40px; text-align:center; font-size:.85em; color:var(--muted); }
     footer a { color:var(--blue); text-decoration:none; }
     footer a:hover { text-decoration:underline; }
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 900px) {
-      nav { padding: 0 20px; gap:12px; flex-wrap:wrap; height:auto; padding-top:10px; padding-bottom:10px; }
-      body { padding-top: 110px; }
-      .hero { padding: 40px 24px; gap:36px; }
-      .section-card { padding: 28px 24px; }
+      nav { padding:0 20px; gap:12px; flex-wrap:wrap; height:auto; padding-top:10px; padding-bottom:10px; }
+      body { padding-top:110px; }
+      .hero-wrapper { padding:36px 24px; }
+      .hero { flex-direction:column; gap:32px; }
+      .hero-visual { flex:none; order:-1; }
+      .hero-win-badge { position:static; margin-bottom:12px; display:inline-flex; }
+      .hero-text { max-width:100%; }
+      .section-card { padding:28px 24px; }
       .author-card { flex-direction:column; text-align:center; }
-      .author-divider { background: linear-gradient(90deg, transparent, var(--accent), transparent); }
+      .author-divider { background:linear-gradient(90deg,transparent,var(--accent),transparent); }
     }
     @media (max-width: 550px) {
       .nav-links { display:none; }
       .nav-right { flex-wrap:wrap; gap:8px; }
-      .hero-title { font-size:2.2em; }
-      .qr-row { flex-direction:column; align-items:center; }
-      .kbd-hero-wrap { gap: 8px; padding: 18px 16px; }
-      .kbd-hero { font-size: .9em; padding: 11px 16px; min-width: 52px; }
+      .hero-headline .line1, .hero-headline .line2 { font-size:1.8em; }
+      .kbd-key { padding:8px 12px; font-size:.85em; min-width:48px; }
+      .feat-badges { gap:6px; }
     }
   </style>
 </head>
@@ -707,75 +548,119 @@
     </div>
   </nav>
 
-
   <!-- ═══ HERO ═══ -->
-  <section class="hero">
-    <div class="hero-text">
+  <div class="hero-wrapper">
+    <section class="hero">
 
-      <h1 class="hero-title">QiClose Tool</h1>
-      <div style="display:flex; justify-content:center; align-items:center;">
-        <div class="hero-badge">⚡ Windows Productivity Tool</div>
-      </div>
-
- <p class="hero-desc">
-       QiClose helps you instanly close all open windows and running apps - in just  
-        <span class="highlight">1 second</span>.
-      </p>
-
-
-      
-      <!-- KEYBOARD SHORTCUT DISPLAY (nổi bật như hình mẫu) -->
-      <div class="kbd-hero-wrap">
-        <span class="kbd-hero">Ctrl</span>
-        <span class="kbd-plus">+</span>
-        <span class="kbd-hero">Alt</span>
-        <span class="kbd-plus">+</span>
-        <span class="kbd-hero">Backspace</span>
-      </div>
-       
-
-     
-
-  <!-- DOWNLOAD AREA -->
-      <div class="download-area">
-     
-        <div class="download-row">
-          <!-- NÚT DOWNLOAD LỚN NỔI BẬT -->
-          <a href="https://lph1994.github.io/setup.zip" class="btn-dl-main">
-            <span class="dl-icon">⬇️</span> Download QiClose for Windows
-          </a>
-          <a href="https://lph1994.github.io/quickclose/guide.jpg" class="btn-dl btn-dl-blue" target="_blank" rel="noopener">
-            📦 How to install?
-          </a>
+      <div class="hero-text">
+        <!-- Windows badge -->
+        <div class="hero-win-badge">
+          <img src="x.png" alt="Windows" style="border-radius:3px;">
+          For Windows 10/11
         </div>
-      </div>
 
-      <br>
-      <div class="hero-btns">
-        <a href="#how-to-use-section" class="btn btn-primary">💡 How to use?</a>
-        <div class="tip-wrap">
-          <a href="#warning-section" class="btn btn-warn">⚠️ Caution!</a>
-          <div class="tip-box">
-            <strong style="display:block;margin-bottom:6px;color:#b45309;">⚠️ Important Warning</strong>
-            🚨 Back up your data before using QiClose.<br>
-            📝 Avoid adding system / security apps to the list.<br>
-            💻 Use only when PC is slow or RAM-overloaded.<br>
-            👨‍💻 Best suited for developers, testers, and power users.
+        <!-- Headline -->
+        <h1 class="hero-headline">
+          <span class="line1">Close all apps instantly.</span>
+          <span class="line2">One shortcut. One second.</span>
+        </h1>
+
+        <!-- Sub -->
+        <p class="hero-sub">
+          QiClose helps you close all open windows and running apps in just <span class="highlight">1 second</span>.
+        </p>
+
+        <!-- Keyboard shortcut -->
+        <div class="kbd-row">
+          <span class="kbd-key">Ctrl</span>
+          <span class="kbd-plus">+</span>
+          <span class="kbd-key">Alt</span>
+          <span class="kbd-plus">+</span>
+          <span class="kbd-key">Backspace</span>
+        </div>
+
+        <!-- Feature badges -->
+        <div class="feat-badges">
+          <div class="feat-badge">
+            <span class="badge-icon badge-green">✓</span>
+            <div>
+              <strong>Safe &amp; Secure</strong>
+              <div class="badge-label">No virus, no ads</div>
+            </div>
+          </div>
+          <div class="feat-badge">
+            <span class="badge-icon badge-teal">🍃</span>
+            <div>
+              <strong>Lightweight</strong>
+              <div class="badge-label">Only 1.2 MB</div>
+            </div>
+          </div>
+          <div class="feat-badge">
+            <span class="badge-icon badge-red">⊘</span>
+            <div>
+              <strong>No Background</strong>
+              <div class="badge-label">100% clean</div>
+            </div>
+          </div>
+          <div class="feat-badge">
+            <span class="badge-icon badge-blue">&lt;/&gt;</span>
+            <div>
+              <strong>Free &amp; Open Source</strong>
+              <div class="badge-label">MIT License</div>
+            </div>
           </div>
         </div>
-        <a href="#support-section" class="btn btn-donate" id="support-me-button">💰 Support me</a>
+
+        <!-- Download button -->
+        <a href="https://lph1994.github.io/setup.zip" class="btn-dl-main">
+          ⬇️ Download QiClose for Windows
+          <span class="btn-dl-sub">v1.0.0 &nbsp;|&nbsp; Windows 10/11 (64-bit)</span>
+        </a>
+
+        <a href="https://lph1994.github.io/quickclose/guide.jpg" class="btn-dl-link" target="_blank" rel="noopener">
+          ⓘ How to install?
+        </a>
+
+        <!-- Stats bar -->
+        <div class="stats-bar">
+          <div class="stat-item">
+            <span class="stat-val">50K+</span>
+            <span class="stat-label">Downloads</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-val">4.9/5 <span class="stars">★★★★★</span></span>
+            <span class="stat-label">&nbsp;</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-val">⊙ Open Source</span>
+            <span class="stat-label">GitHub</span>
+          </div>
+        </div>
+
+        <!-- Action buttons -->
+        <div class="action-btns" style="margin-top:20px;">
+          <a href="#how-to-use-section" class="btn btn-primary">💡 How to use?</a>
+          <div class="tip-wrap">
+            <a href="#warning-section" class="btn btn-warn">⚠️ Caution!</a>
+            <div class="tip-box">
+              <strong style="display:block;margin-bottom:6px;color:#b45309;">⚠️ Important Warning</strong>
+              🚨 Back up your data before using QiClose.<br>
+              📝 Avoid adding system / security apps to the list.<br>
+              💻 Use only when PC is slow or RAM-overloaded.<br>
+              👨‍💻 Best suited for developers, testers, and power users.
+            </div>
+          </div>
+          <a href="#support-section" class="btn btn-donate" id="support-me-button">💰 Support me</a>
+        </div>
       </div>
 
-    
-
-    </div>
-
-    <div class="hero-visual">
-      <div class="img-card">
+      <!-- Hero visual -->
+      <div class="hero-visual">
         <img src="newapp.jpg" alt="QiClose App Screenshot">
       </div>
-    </div>
-  </section>
+
+    </section>
+  </div>
 
   <!-- ═══ FEATURES ═══ -->
   <section class="features-strip">
@@ -831,7 +716,6 @@
             </div>
             <span class="qr-label">PayPal / Ko-fi</span>
           </div>
-
           <div class="qr-slot">
             <img src="your-momo-qr.png" alt="MoMo QR"
                  onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -846,9 +730,7 @@
             <span class="qr-label">Zalo / MoMo</span>
           </div>
         </div>
-
       </div>
-      <!-- END DONATE CARD -->
 
     </div>
   </section>
