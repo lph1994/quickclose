@@ -1017,27 +1017,86 @@
     </div>
   </div>
 
-  <!-- ═══ AUTHOR ═══ -->
-  <div class="author-wrap" id="about-author-section">
-    <div class="author-card">
-      <div class="author-avatar">
-        <img src="your-avatar.jpg" alt="Author Avatar">
+ <!-- ═══ AUTHOR ═══ -->
+<section id="about-author-section" style="
+  width: 100%;
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #0f2d1e 100%);
+  padding: 56px 40px;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+">
+  <!-- vòng trang trí nền -->
+  <div style="position:absolute;top:-80px;right:-80px;width:300px;height:300px;border-radius:50%;background:rgba(37,99,235,0.12);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:-60px;left:-60px;width:240px;height:240px;border-radius:50%;background:rgba(22,163,74,0.1);pointer-events:none;"></div>
+
+  <div style="max-width:1060px;margin:0 auto;display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:start;position:relative;z-index:1;">
+
+    <!-- cột trái: avatar + social icons -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:16px;">
+      <div style="width:150px;height:150px;border-radius:50%;padding:4px;background:linear-gradient(135deg,#f97316,#2563eb,#06b6d4);">
+        <div style="width:100%;height:100%;border-radius:50%;overflow:hidden;border:3px solid #0f172a;">
+          <img src="your-avatar.jpg" alt="LPH" style="width:100%;height:100%;object-fit:cover;display:block;"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div style="display:none;width:100%;height:100%;background:linear-gradient(135deg,#1e3a5f,#0f2d1e);align-items:center;justify-content:center;font-size:42px;font-weight:800;color:#60a5fa;">LPH</div>
+        </div>
       </div>
-      <div class="author-info">
-        <h2 class="author-name">LPH</h2>
-        <a href="https://www.facebook.com/MidasAnder" class="author-link" target="_blank" rel="noopener">
-          facebook.com/MidasAnder
+
+      <!-- social icon buttons -->
+      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">
+        <a href="https://www.facebook.com/MidasAnder" target="_blank" style="width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;text-decoration:none;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#60a5fa"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
         </a>
-        <p class="author-bio">
-          After the COVID-19 pandemic, my work and personal life faced many difficulties. But instead of giving up, I chose to move forward and wanted to create something truly meaningful for this life.
-        </p>
-        <p class="author-bio">
-          This application is not just a simple support tool. It gradually became a spiritual companion, helping me get through some of the darkest moments.
-        </p>
-        <div class="author-divider"></div>
+        <a href="https://x.com/QiClose" target="_blank" style="width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;text-decoration:none;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#e2e8f0"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.259 5.632L18.244 2.25z"/></svg>
+        </a>
+        <a href="https://www.reddit.com/user/QiClose" target="_blank" style="width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;text-decoration:none;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#f97316"><circle cx="12" cy="12" r="10"/><path d="M21 12a2 2 0 00-2-2c-.57 0-1.08.22-1.46.58C15.96 9.26 14.04 8.83 12 9l.8-3.8 2.6.55a1.5 1.5 0 103-.25l-3-.63L14.6 8.9c-2.08.04-4.04.5-5.6 1.7A2 2 0 003 12a2 2 0 001.5 1.93c-.04.2-.06.4-.06.6 0 2.78 3.45 5.03 7.56 5.03s7.56-2.25 7.56-5.03c0-.2-.02-.4-.06-.6A2 2 0 0021 12z" fill="#fff"/><circle cx="9" cy="13" r="1.2" fill="#f97316"/><circle cx="15" cy="13" r="1.2" fill="#f97316"/><path d="M9.5 16s1 1 2.5 1 2.5-1 2.5-1" stroke="#f97316" stroke-width="1" stroke-linecap="round" fill="none"/></svg>
+        </a>
+        <a href="https://discord.gg/NKaJjeGdxJ" target="_blank" style="width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;text-decoration:none;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#818cf8"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03z"/></svg>
+        </a>
+        <a href="mailto:quickclosedonate@gmail.com" style="width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;text-decoration:none;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+        </a>
       </div>
     </div>
+
+    <!-- cột phải: nội dung -->
+    <div>
+      <div style="display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#06b6d4;background:rgba(6,182,212,0.12);border:1px solid rgba(6,182,212,0.3);border-radius:20px;padding:4px 14px;margin-bottom:14px;">👤 About the Author</div>
+      <h2 style="font-size:2.4em;font-weight:800;color:#fff;line-height:1.1;margin:0 0 4px;letter-spacing:-0.02em;">LPH — <span style="background:linear-gradient(90deg,#f97316,#fb923c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Lê Phúc Hội</span></h2>
+      <p style="font-size:0.98em;color:#94a3b8;margin:0 0 20px;font-weight:500;">Independent Developer · QiClose Creator · Based in Vietnam 🇻🇳</p>
+      <div style="height:2px;width:60px;background:linear-gradient(90deg,#f97316,transparent);border-radius:2px;margin-bottom:20px;"></div>
+
+      <p style="font-size:0.97em;color:#cbd5e1;line-height:1.8;margin-bottom:12px;">After the COVID-19 pandemic, my work and personal life faced many difficulties. But instead of giving up, I chose to <strong style="color:#f0f9ff;">move forward</strong> and wanted to create something truly meaningful for this life.</p>
+      <p style="font-size:0.97em;color:#cbd5e1;line-height:1.8;margin-bottom:24px;">This application is not just a simple support tool. It gradually became a <strong style="color:#f0f9ff;">spiritual companion</strong>, helping me get through some of the darkest moments. Building QiClose over <strong style="color:#f0f9ff;">2 years</strong> — every line of code carries a story.</p>
+
+      <!-- contact chips -->
+      <div style="display:flex;flex-wrap:wrap;gap:10px;">
+        <a href="https://www.facebook.com/MidasAnder" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:30px;padding:7px 16px;font-size:0.83em;color:#e2e8f0;font-weight:600;text-decoration:none;">📘 facebook.com/MidasAnder</a>
+        <a href="https://x.com/QiClose" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:30px;padding:7px 16px;font-size:0.83em;color:#e2e8f0;font-weight:600;text-decoration:none;">✖ @QiClose</a>
+        <a href="https://discord.gg/NKaJjeGdxJ" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:30px;padding:7px 16px;font-size:0.83em;color:#e2e8f0;font-weight:600;text-decoration:none;">💬 Discord</a>
+        <a href="https://www.reddit.com/user/QiClose" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:30px;padding:7px 16px;font-size:0.83em;color:#e2e8f0;font-weight:600;text-decoration:none;">🟠 Reddit</a>
+        <a href="mailto:quickclosedonate@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:30px;padding:7px 16px;font-size:0.83em;color:#e2e8f0;font-weight:600;text-decoration:none;">📧 quickclosedonate@gmail.com</a>
+        <a href="https://paypal.me/lph194" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:30px;padding:7px 16px;font-size:0.83em;color:#e2e8f0;font-weight:600;text-decoration:none;">💛 paypal.me/lph194</a>
+        <a href="https://ko-fi.com/lph194" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:30px;padding:7px 16px;font-size:0.83em;color:#e2e8f0;font-weight:600;text-decoration:none;">☕ ko-fi.com/lph194</a>
+      </div>
+
+      <!-- stats bar -->
+      <div style="display:flex;gap:24px;margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);flex-wrap:wrap;">
+        <div><span style="display:block;font-size:1.5em;font-weight:800;color:#fff;line-height:1;">2 yrs</span><span style="font-size:0.75em;color:#64748b;font-weight:500;">Dev time</span></div>
+        <div style="width:1px;background:rgba(255,255,255,0.08);"></div>
+        <div><span style="display:block;font-size:1.5em;font-weight:800;color:#fff;line-height:1;">3.5 MB</span><span style="font-size:0.75em;color:#64748b;font-weight:500;">Lightweight</span></div>
+        <div style="width:1px;background:rgba(255,255,255,0.08);"></div>
+        <div><span style="display:block;font-size:1.5em;font-weight:800;color:#fff;line-height:1;">100%</span><span style="font-size:0.75em;color:#64748b;font-weight:500;">Free forever</span></div>
+        <div style="width:1px;background:rgba(255,255,255,0.08);"></div>
+        <div><span style="display:block;font-size:1.5em;font-weight:800;color:#fff;line-height:1;">Win 10/11</span><span style="font-size:0.75em;color:#64748b;font-weight:500;">Supported</span></div>
+      </div>
+    </div>
+
   </div>
+</section>
 
   <!-- ═══ FOOTER ═══ -->
   <footer>
