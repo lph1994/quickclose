@@ -684,47 +684,92 @@
           </div>
         </div>
 
-        <!-- Download button -->
-        <a href="https://lph1994.github.io/setup.zip" class="btn-dl-main">
-          ⬇️ Download QiClose for Windows
-          <span class="btn-dl-sub">v1.0.0 &nbsp;|&nbsp; Windows 10/11 (64-bit)</span>
-           
-        </a>
-      <a href="https://lph1994.github.io/quickclose/guide.jpg" class="btn-dl-link" target="_blank" rel="noopener">
-          ⓘ How to install?
-        </a>
-       
+      <!-- Download button -->
+<a href="https://lph1994.github.io/setup.zip" class="btn-dl-main">
+  ⬇️ Download QiClose for Windows
+  <span class="btn-dl-sub">v1.0.0 &nbsp;|&nbsp; Windows 10/11 (64-bit)</span>
+</a>
+<a href="https://lph1994.github.io/quickclose/guide.jpg" class="btn-dl-link" target="_blank" rel="noopener">
+  ⓘ How to install?
+</a>
 
-        <!-- Stats bar -->
-        <div class="stats-bar">
-          <div class="stat-item">
-            <span class="stat-val">50K+</span>
-            <span class="stat-label">Downloads</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-val">4.9/5 <span class="stars">★★★★★</span></span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-val">⊙ Open Source</span>
-            
-          </div>
-        </div>
+<!-- Stats bar + QR PayPal cùng hàng -->
+<div style="display:flex; align-items:stretch; gap:10px; margin-top:14px; max-width:560px;">
+  
+  <!-- Stats bar -->
+  <div class="stats-bar" style="margin-top:0; flex:1;">
+    <div class="stat-item">
+      <span class="stat-val">50K+</span>
+      <span class="stat-label">Downloads</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-val">4.9/5 <span class="stars">★★★★★</span></span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-val">⊙ Open Source</span>
+    </div>
+  </div>
 
-        <!-- Action buttons -->
-        <div class="action-btns" style="margin-top:20px;">
-          <a href="#how-to-use-section" class="btn btn-primary">💡 How to use?</a>
-          <div class="tip-wrap">
-            <a href="#warning-section" class="btn btn-warn">⚠️ Caution!</a>
-            <div class="tip-box">
-              <strong style="display:block;margin-bottom:6px;color:#b45309;">⚠️ Important Warning</strong>
-              🚨 Back up your data before using QiClose.<br>
-              📝 Avoid adding system / security apps to the list.<br>
-              💻 Use only when PC is slow or RAM-overloaded.<br>
-              👨‍💻 Best suited for developers, testers, and power users.
-            </div>
-          </div>
-          <a href="#support-section" class="btn btn-donate" id="support-me-button">💰 Support me</a>
-        </div>
+  <!-- QR PayPal -->
+  <div style="
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    background: linear-gradient(135deg, #eff6ff, #f0fdfa);
+    border: 1.5px solid #93c5fd;
+    border-radius: 10px;
+    padding: 6px 10px;
+    min-width: 100px;
+  ">
+    <span style="font-size:.62em;font-weight:700;color:#1d4ed8;white-space:nowrap;">💛 PayPal Donate</span>
+    <img
+      src="your-paypal-qr.png"
+      alt="PayPal QR"
+      style="width:72px;height:72px;border-radius:6px;border:1.5px solid #bfdbfe;background:#fff;padding:3px;object-fit:contain;"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+    >
+    <div style="
+      display:none;width:72px;height:72px;
+      background:#dbeafe;border-radius:6px;
+      align-items:center;justify-content:center;
+      flex-direction:column;gap:3px;
+      border:2px dashed #93c5fd;
+      color:#1d4ed8;font-size:.6em;font-weight:700;text-align:center;
+    ">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="3" y="3" width="7" height="7" rx="1"/>
+        <rect x="14" y="3" width="7" height="7" rx="1"/>
+        <rect x="3" y="14" width="7" height="7" rx="1"/>
+        <circle cx="17.5" cy="17.5" r="2.5"/>
+      </svg>
+      PayPal QR
+    </div>
+    <a href="https://paypal.me/lph194" target="_blank" rel="noopener"
+       style="font-size:.58em;color:#2563eb;font-weight:700;text-decoration:none;">
+      paypal.me/lph194
+    </a>
+  </div>
+
+</div>
+
+<!-- Action buttons -->
+<div class="action-btns" style="margin-top:20px;">
+  <a href="#how-to-use-section" class="btn btn-primary">💡 How to use?</a>
+  <div class="tip-wrap">
+    <a href="#warning-section" class="btn btn-warn">⚠️ Caution!</a>
+    <div class="tip-box">
+      <strong style="display:block;margin-bottom:6px;color:#b45309;">⚠️ Important Warning</strong>
+      🚨 Back up your data before using QiClose.<br>
+      📝 Avoid adding system / security apps to the list.<br>
+      💻 Use only when PC is slow or RAM-overloaded.<br>
+      👨‍💻 Best suited for developers, testers, and power users.
+    </div>
+  </div>
+  <a href="#support-section" class="btn btn-donate" id="support-me-button">💰 Support me</a>
+</div>
       </div>
 
       <!-- Hero visual -->
