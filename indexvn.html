@@ -882,7 +882,61 @@
   <div class="section-wrap" id="how-to-use-section">
     <div class="section-card">
       <h2 class="section-title">💡 Cách Sử Dụng QiClose</h2>
+<!-- CHÈN DEMO VÀO ĐÂY -->
+   <div style="
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(37,99,235,0.15);
+  margin-bottom: 40px;
+">
+  <img
+    id="demo-gif"
+    src="demo-thumb.jpg"
+    data-gif="demo.gif"
+    alt="QiClose Demo"
+    style="width:100%;display:block;border-radius:16px;"
+  >
 
+  <div id="demo-overlay" style="
+    position: absolute;
+    inset: 0;
+    background: rgba(15,23,42,0.45);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    border-radius: 16px;
+    cursor: pointer;
+  " onclick="
+    document.getElementById('demo-gif').src = document.getElementById('demo-gif').dataset.gif;
+    document.getElementById('demo-overlay').style.display='none';
+  ">
+
+    <div style="
+      width: 80px; height: 80px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    "
+    onmouseover="this.style.transform='scale(1.12)'"
+    onmouseout="this.style.transform='scale(1)'">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="#2563eb">
+        <polygon points="6,3 20,12 6,21"/>
+      </svg>
+    </div>
+
+    <span style="color:#fff;font-weight:700;font-size:1em;letter-spacing:0.02em;">▶ Click to play demo</span>
+    <span style="color:rgba(255,255,255,0.65);font-size:0.8em;">QiClose in action</span>
+
+  </div>
+</div>
+    <!-- KẾT THÚC DEMO -->
       
       <div class="steps">
 
